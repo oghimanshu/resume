@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,9 @@
     <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
 
     <!-- ICONS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -22,13 +25,14 @@
             --bg-color: #fcf9f5;
             --text-main: #2b2d42;
             --text-muted: #6c757d;
-            --accent-color: #c9184a; /* Aipan Art Red */
+            --accent-color: #c9184a;
+            /* Aipan Art Red */
             --card-bg: rgba(255, 255, 255, 0.65);
             --border-color: rgba(0, 0, 0, 0.08);
-            
+
             --font-head: 'Playfair Display', serif;
             --font-body: 'Inter', sans-serif;
-            
+
             --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -100,7 +104,9 @@
             padding: 100px 0;
         }
 
-        h1, h2, h3 {
+        h1,
+        h2,
+        h3 {
             font-family: var(--font-head);
             font-weight: 700;
         }
@@ -115,7 +121,8 @@
         }
 
         .section-title::after {
-            content: '↟ ─── ✧ ─── ↟'; /* Garhwal Pine/Mountain Motif */
+            content: '↟ ─── ✧ ─── ↟';
+            /* Garhwal Pine/Mountain Motif */
             display: block;
             margin-top: 15px;
             color: var(--accent-color);
@@ -178,7 +185,7 @@
             border-radius: 50px;
             border: 1px solid var(--border-color);
             display: inline-flex;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
         }
 
         .hero-locations i {
@@ -190,15 +197,15 @@
             position: relative;
             border-radius: 30px;
             overflow: hidden;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
         }
-        
+
         .hero-img-wrapper::after {
             content: '';
             position: absolute;
             inset: 0;
             border-radius: 30px;
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             pointer-events: none;
         }
 
@@ -258,7 +265,7 @@
             color: var(--text-main);
             font-size: 1.2rem;
             text-decoration: none;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
             transition: var(--transition);
             border: 1px solid var(--border-color);
         }
@@ -283,7 +290,7 @@
             padding: 40px;
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.03);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.03);
             transition: var(--transition);
             position: relative;
             overflow: hidden;
@@ -305,7 +312,7 @@
 
         .card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 25px 45px rgba(0,0,0,0.06);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.06);
             border-color: rgba(201, 24, 74, 0.2);
         }
 
@@ -398,10 +405,10 @@
             font-size: 1.3rem;
             cursor: pointer;
             z-index: 1000;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
             transition: var(--transition);
         }
-        
+
         .theme-toggle:hover {
             transform: scale(1.1) rotate(15deg);
         }
@@ -413,24 +420,30 @@
                 text-align: center;
                 gap: 40px;
             }
+
             .hero-title-wrap {
                 order: 2;
             }
+
             .hero-img-wrap {
                 order: 1;
                 max-width: 450px;
                 margin: 0 auto;
             }
+
             .hero-desc {
                 margin: 0 auto 35px;
             }
+
             .hero-locations {
                 margin-left: auto;
                 margin-right: auto;
             }
+
             .social-links {
                 justify-content: center;
             }
+
             .section-title {
                 font-size: 2.2rem;
             }
@@ -448,11 +461,12 @@
         }
     </style>
 </head>
+
 <body class="dark-mode">
 
     <!-- Cherry Blossom Animation Canvas -->
     <canvas id="cherry-blossom-canvas"></canvas>
-    
+
     <!-- Uttarakhand Mountains Silhoutte via SVG -->
     <div class="mountain-bg"></div>
 
@@ -469,30 +483,36 @@
                         <div class="hero-title-wrap hero-content">
                             <div class="hero-subtitle">Assistant Professor & Economist</div>
                             <h1>Himanshu Gaur</h1>
-                            
+
                             <div class="hero-locations">
                                 <span><i class="fa-solid fa-location-dot"></i> Mumbai, MH</span>
                                 <span><i class="fa-solid fa-mountain-sun"></i> Dehradun, UK</span>
                             </div>
 
                             <p class="hero-desc">
-                                I am an Economist, Researcher, and UGC NET Qualified Assistant Professor. My work intersects economic theory with data-driven insights to analyze markets and equip the next generation with actionable knowledge.
+                                I am an Economist, Researcher, and UGC NET Qualified Assistant Professor. My work
+                                intersects economic theory with data-driven insights to analyze markets and equip the
+                                next generation with actionable knowledge.
                             </p>
-                            
+
                             <a href="mailto:cliquehimanshu@gmail.com" class="btn">
                                 <i class="fa-solid fa-envelope"></i> Connect via Email
                             </a>
 
                             <div class="social-links">
-                                <a href="https://linkedin.com/in/thisishimanshu" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
-                                <a href="https://www.researchgate.net/profile/Himanshu-Gaur-11?ev=hdr_xprf" target="_blank"><i class="fa-brands fa-researchgate"></i></a>
-                                <a href="https://github.com/oghimanshu" target="_blank"><i class="fa-brands fa-github"></i></a>
+                                <a href="https://linkedin.com/in/thisishimanshu" target="_blank"><i
+                                        class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="https://www.researchgate.net/profile/Himanshu-Gaur-11?ev=hdr_xprf"
+                                    target="_blank"><i class="fa-brands fa-researchgate"></i></a>
+                                <a href="https://github.com/oghimanshu" target="_blank"><i
+                                        class="fa-brands fa-github"></i></a>
                             </div>
                         </div>
 
                         <div class="hero-img-wrap">
                             <div class="hero-img-wrapper">
-                                <img src="./profile.jpg" alt="Himanshu Gaur" class="hero-img" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=800&q=80'">
+                                <img src="./profile.jpg" alt="Himanshu Gaur" class="hero-img"
+                                    onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=800&q=80'">
                             </div>
                         </div>
                     </div>
@@ -508,25 +528,30 @@
                             <span class="card-tag">Current Position</span>
                             <h3>Assistant Professor</h3>
                             <span class="timeline">Pillai College • June 2025 - Present</span>
-                            <p>Mentoring students on intricate research projects, actively publishing peer-reviewed papers, and continuously engaging with diverse academic communities to foster modern economic literacy.</p>
+                            <p>Mentoring students on intricate research projects, actively publishing peer-reviewed
+                                papers, and continuously engaging with diverse academic communities to foster modern
+                                economic literacy.</p>
                         </div>
                         <div class="card">
                             <span class="card-tag">Internship</span>
                             <h3>Finance Content Development Intern</h3>
                             <span class="timeline">LetsTute • Jan - Mar 2024</span>
-                            <p>Simplified complex financial markets for broad audiences, pioneered educational content, and formulated critical case studies for analytical e-learning.</p>
+                            <p>Simplified complex financial markets for broad audiences, pioneered educational content,
+                                and formulated critical case studies for analytical e-learning.</p>
                         </div>
                         <div class="card">
                             <span class="card-tag">Leadership</span>
                             <h3>General Secretary</h3>
                             <span class="timeline">Commerce and Economics Association</span>
-                            <p>Spearheaded collegiate research competitions and conceptualized investment workshops encouraging widespread institutional financial literacy.</p>
+                            <p>Spearheaded collegiate research competitions and conceptualized investment workshops
+                                encouraging widespread institutional financial literacy.</p>
                         </div>
                         <div class="card">
                             <span class="card-tag">Volunteering</span>
                             <h3>Peer Guide</h3>
                             <span class="timeline">Akshara Centre • 2021-22</span>
-                            <p>Orchestrated impact-focused gender sensitization workshops and implemented civic rights awareness training sessions.</p>
+                            <p>Orchestrated impact-focused gender sensitization workshops and implemented civic rights
+                                awareness training sessions.</p>
                         </div>
                     </div>
                 </div>
@@ -541,7 +566,8 @@
                             <span class="card-tag">Postgraduate</span>
                             <h3>MA Business Economics</h3>
                             <span class="timeline">SIES College • 2023-2025</span>
-                            <p>Advanced study of economic principles meticulously integrated with actionable business strategies and profound market analysis.</p>
+                            <p>Advanced study of economic principles meticulously integrated with actionable business
+                                strategies and profound market analysis.</p>
                             <div class="grade-badges">
                                 <span class="grade-badge">Sem 1: 9.64</span>
                                 <span class="grade-badge">Sem 2: 10.0</span>
@@ -553,8 +579,10 @@
                             <span class="card-tag">Undergraduate</span>
                             <h3>BA Economics</h3>
                             <span class="timeline">ICLES' MJ College</span>
-                            <p>Cultivated a strong foundational knowledge in macroeconomic frameworks and precise quantitative microeconomics.</p>
-                            <p style="margin-top: 15px; font-size: 1.1rem; font-weight: 600; color: var(--text-main);">Final Assessment Grade: <span style="color: var(--accent-color);">9.39</span></p>
+                            <p>Cultivated a strong foundational knowledge in macroeconomic frameworks and precise
+                                quantitative microeconomics.</p>
+                            <p style="margin-top: 15px; font-size: 1.1rem; font-weight: 600; color: var(--text-main);">
+                                Final Assessment Grade: <span style="color: var(--accent-color);">9.39</span></p>
                         </div>
                     </div>
                 </div>
@@ -564,35 +592,47 @@
             <section>
                 <div class="container">
                     <h2 class="section-title">Certifications & Accolades</h2>
-                    <div class="grid-layout" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px;">
+                    <div class="grid-layout"
+                        style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px;">
                         <div class="card" style="padding: 30px;">
-                            <i class="fa-solid fa-award" style="font-size: 2.2rem; color: var(--accent-color); margin-bottom: 20px;"></i>
+                            <i class="fa-solid fa-award"
+                                style="font-size: 2.2rem; color: var(--accent-color); margin-bottom: 20px;"></i>
                             <h3>UGC NET Qualified</h3>
                             <span class="timeline">Dec 2024 & Dec 2025</span>
                             <p style="font-size: 0.9rem;">Assistant Professor Qualification</p>
                         </div>
-                        <a href="https://freecodecamp.org/certification/gaurhimanshu/data-analysis-with-python-v7" target="_blank" style="text-decoration: none;" class="card">
-                            <i class="fa-brands fa-python" style="font-size: 2.2rem; color: var(--text-main); margin-bottom: 20px;"></i>
+                        <a href="https://freecodecamp.org/certification/gaurhimanshu/data-analysis-with-python-v7"
+                            target="_blank" style="text-decoration: none;" class="card">
+                            <i class="fa-brands fa-python"
+                                style="font-size: 2.2rem; color: var(--text-main); margin-bottom: 20px;"></i>
                             <h3>Data Analysis (Python)</h3>
                             <span class="timeline" style="margin-bottom: 0;">freeCodeCamp • 2024</span>
                         </a>
-                        <a href="https://www.udemy.com/certificate/UC-55907c67-fe63-4628-b8cb-b7b7cf6ad9cb/" target="_blank" style="text-decoration: none;" class="card">
-                            <i class="fa-solid fa-chart-line" style="font-size: 2.2rem; color: var(--text-main); margin-bottom: 20px;"></i>
+                        <a href="https://www.udemy.com/certificate/UC-55907c67-fe63-4628-b8cb-b7b7cf6ad9cb/"
+                            target="_blank" style="text-decoration: none;" class="card">
+                            <i class="fa-solid fa-chart-line"
+                                style="font-size: 2.2rem; color: var(--text-main); margin-bottom: 20px;"></i>
                             <h3>Rural Marketing</h3>
                             <span class="timeline" style="margin-bottom: 0;">Udemy • Jan 2024</span>
                         </a>
-                        <a href="https://www.udemy.com/certificate/UC-34efda3c-2e6c-460e-98ed-08aa02ac6bd2/" target="_blank" style="text-decoration: none;" class="card">
-                            <i class="fa-solid fa-chart-pie" style="font-size: 2.2rem; color: var(--text-main); margin-bottom: 20px;"></i>
+                        <a href="https://www.udemy.com/certificate/UC-34efda3c-2e6c-460e-98ed-08aa02ac6bd2/"
+                            target="_blank" style="text-decoration: none;" class="card">
+                            <i class="fa-solid fa-chart-pie"
+                                style="font-size: 2.2rem; color: var(--text-main); margin-bottom: 20px;"></i>
                             <h3>Data Vis with R</h3>
                             <span class="timeline" style="margin-bottom: 0;">Udemy • Nov 2023</span>
                         </a>
-                        <a href="https://www.udemy.com/certificate/UC-06ce8c71-39fd-459c-95be-4d488188ef39/" target="_blank" style="text-decoration: none;" class="card">
-                            <i class="fa-solid fa-square-poll-vertical" style="font-size: 2.2rem; color: var(--text-main); margin-bottom: 20px;"></i>
+                        <a href="https://www.udemy.com/certificate/UC-06ce8c71-39fd-459c-95be-4d488188ef39/"
+                            target="_blank" style="text-decoration: none;" class="card">
+                            <i class="fa-solid fa-square-poll-vertical"
+                                style="font-size: 2.2rem; color: var(--text-main); margin-bottom: 20px;"></i>
                             <h3>Statistics Data</h3>
                             <span class="timeline" style="margin-bottom: 0;">Udemy • Sep 2023</span>
                         </a>
-                        <a href="https://skillshop.exceedlms.com/student/award/QYGJtYwWdFqT5n75WjaC6iff" target="_blank" style="text-decoration: none;" class="card">
-                            <i class="fa-brands fa-google" style="font-size: 2.2rem; color: var(--text-main); margin-bottom: 20px;"></i>
+                        <a href="https://skillshop.exceedlms.com/student/award/QYGJtYwWdFqT5n75WjaC6iff" target="_blank"
+                            style="text-decoration: none;" class="card">
+                            <i class="fa-brands fa-google"
+                                style="font-size: 2.2rem; color: var(--text-main); margin-bottom: 20px;"></i>
                             <h3>Digital Marketing</h3>
                             <span class="timeline" style="margin-bottom: 0;">Google • July 2021</span>
                         </a>
@@ -605,15 +645,17 @@
                 <div class="container">
                     <h2 class="section-title">Research & Projects</h2>
                     <div class="grid-layout">
-                        
+
                         <!-- NEWLY ADDED PAPER -->
                         <div class="card">
                             <span class="card-tag">Latest DOI Publication</span>
                             <h3>Academic Research Feature</h3>
                             <span class="timeline">DOI: 10.13140/RG.2.2.22068.62082</span>
-                            <p>An in-depth empirical contribution to ongoing academic discourse in contemporary economic issues and modern financial theories.</p>
+                            <p>An in-depth empirical contribution to ongoing academic discourse in contemporary economic
+                                issues and modern financial theories.</p>
                             <div class="card-action">
-                                <a href="https://doi.org/10.13140/RG.2.2.22068.62082" target="_blank" class="btn">View Document</a>
+                                <a href="https://doi.org/10.13140/RG.2.2.22068.62082" target="_blank" class="btn">View
+                                    Document</a>
                             </div>
                         </div>
 
@@ -621,9 +663,11 @@
                             <span class="card-tag">Publication</span>
                             <h3>The Subscription Economy</h3>
                             <span class="timeline">A Comparative Study (2025)</span>
-                            <p>Exploring and contrasting complex consumer preferences derived from the rising digital subscription-based service model globally.</p>
+                            <p>Exploring and contrasting complex consumer preferences derived from the rising digital
+                                subscription-based service model globally.</p>
                             <div class="card-action">
-                                <a href="https://www.researchgate.net/publication/395390830_THE_SUBSCRIPTION_ECONOMY_A_COMPARATIVE_STUDY_OF_CONSUMER_PREFERENCES" target="_blank" class="btn">Read Paper</a>
+                                <a href="https://www.researchgate.net/publication/395390830_THE_SUBSCRIPTION_ECONOMY_A_COMPARATIVE_STUDY_OF_CONSUMER_PREFERENCES"
+                                    target="_blank" class="btn">Read Paper</a>
                             </div>
                         </div>
 
@@ -631,9 +675,11 @@
                             <span class="card-tag">Publication</span>
                             <h3>Space Tourism</h3>
                             <span class="timeline">An Indian Perspective (2023)</span>
-                            <p>Assessing the market feasibility, regulatory boundaries, and macroscopic economic impact of commercial space tourism in India.</p>
+                            <p>Assessing the market feasibility, regulatory boundaries, and macroscopic economic impact
+                                of commercial space tourism in India.</p>
                             <div class="card-action">
-                                <a href="https://www.researchgate.net/publication/396561507_Space_Tourism_An_Indian_Perspective" target="_blank" class="btn">Read Paper</a>
+                                <a href="https://www.researchgate.net/publication/396561507_Space_Tourism_An_Indian_Perspective"
+                                    target="_blank" class="btn">Read Paper</a>
                             </div>
                         </div>
 
@@ -641,9 +687,11 @@
                             <span class="card-tag">Publication</span>
                             <h3>Mental Accounting</h3>
                             <span class="timeline">Navi Mumbai Regional Study</span>
-                            <p>A statistical analysis breaking down the mental accounting practices and micro-financial decisions of women in modern urban settings.</p>
+                            <p>A statistical analysis breaking down the mental accounting practices and micro-financial
+                                decisions of women in modern urban settings.</p>
                             <div class="card-action">
-                                <a href="https://www.researchgate.net/publication/401584967_Mental_Accounting_and_Financial_Decisions_of_Women_in_Navi_Mumbai" target="_blank" class="btn">Read Paper</a>
+                                <a href="https://www.researchgate.net/publication/401584967_Mental_Accounting_and_Financial_Decisions_of_Women_in_Navi_Mumbai"
+                                    target="_blank" class="btn">Read Paper</a>
                             </div>
                         </div>
 
@@ -651,9 +699,11 @@
                             <span class="card-tag">Digital Project</span>
                             <h3>Python Educational Platform</h3>
                             <span class="timeline">Interactive Academic Tool</span>
-                            <p>A sophisticated, interactive web platform strategically designed for teaching Python-based data analysis seamlessly to beginners.</p>
+                            <p>A sophisticated, interactive web platform strategically designed for teaching
+                                Python-based data analysis seamlessly to beginners.</p>
                             <div class="card-action">
-                                <a href="https://oghimanshu.github.io/Data-Analysis-with-Python/" target="_blank" class="btn">Visit Platform</a>
+                                <a href="https://oghimanshu.github.io/Data-Analysis-with-Python/" target="_blank"
+                                    class="btn">Visit Platform</a>
                             </div>
                         </div>
 
@@ -661,9 +711,11 @@
                 </div>
             </section>
 
-            <footer style="text-align: center; padding: 60px 20px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 1rem;">
+            <footer
+                style="text-align: center; padding: 60px 20px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 1rem;">
                 <p>&copy; 2026 Himanshu Gaur. Developed with modern web aesthetics.</p>
-                <p style="margin-top: 5px; font-size: 0.9rem; opacity: 0.7;">⚬ Roots in Dehradun, Operating globally. ⚬</p>
+                <p style="margin-top: 5px; font-size: 0.9rem; opacity: 0.7;">⚬ Roots in Dehradun, Operating globally. ⚬
+                </p>
             </footer>
 
         </div>
@@ -679,7 +731,7 @@
         document.getElementById('theme-btn').addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
             const icon = document.querySelector('#theme-btn i');
-            if(document.body.classList.contains('dark-mode')) {
+            if (document.body.classList.contains('dark-mode')) {
                 icon.classList.remove('fa-moon');
                 icon.classList.add('fa-sun');
             } else {
@@ -691,10 +743,10 @@
         // 🌸 Highly Optimized Cherry Blossom Animation System 🌸
         const canvas = document.getElementById('cherry-blossom-canvas');
         const ctx = canvas.getContext('2d');
-        
+
         let width = canvas.width = window.innerWidth;
         let height = canvas.height = window.innerHeight;
-        
+
         window.addEventListener('resize', () => {
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
@@ -732,7 +784,7 @@
                 if (this.y > height + 20) {
                     this.reset();
                 }
-                
+
                 if (this.x > width + 20) this.x = -20;
                 else if (this.x < -20) this.x = width + 20;
             }
@@ -741,23 +793,23 @@
                 ctx.save();
                 ctx.translate(this.x, this.y);
                 ctx.rotate(this.angle * Math.PI / 180);
-                
+
                 // Adaptive colors depending on theme
                 const isDark = document.body.classList.contains('dark-mode');
                 // Light mode: soft pink (#ffb7c5). Dark mode: deep saturated pink (#ff4d6d).
                 const r = isDark ? 255 : 255;
                 const g = isDark ? 77 : 183;
                 const b = isDark ? 109 : 197;
-                
+
                 ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${this.opacity})`;
-                
+
                 // Elegant petal path rendering
                 ctx.beginPath();
                 ctx.moveTo(0, 0);
                 ctx.quadraticCurveTo(this.size * 1.5, -this.size * 1.5, this.size * 2, 0);
                 ctx.quadraticCurveTo(this.size * 1.5, this.size * 1.5, 0, 0);
                 ctx.fill();
-                
+
                 ctx.restore();
             }
         }
@@ -778,4 +830,5 @@
         animate();
     </script>
 </body>
+
 </html>
