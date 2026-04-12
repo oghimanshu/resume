@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Himanshu Gaur | The Graphic Novel</title>
+    <title>Himanshu Gaur | Academic Portfolio</title>
 
     <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Space+Grotesk:wght@400;500;700;800;900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <!-- ICONS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -21,1023 +18,764 @@
 
     <style>
         :root {
-            /* BERSERK PALETTE */
-            --bg: #e0e0e0;
-            --ink: #050505;
-            --paper: #f9f9f9;
-            --accent-red: #b30000;
-            --pop-yellow: #f1c40f;
-            --pop-cyan: var(--ink);
-            --pop-purple: var(--ink);
-
-            --border: 4px solid var(--ink);
-            --shadow: 10px 10px 0px #000;
-
-            --font-head: 'Cinzel', serif;
-            --font-body: 'Space Grotesk', sans-serif;
-
-            /* Authentic rough hand-drawn border effect */
-            --manga-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+            /* Light theme - Pahadi/Aipan inspired soft colors */
+            --bg-color: #fcf9f5;
+            --text-main: #2b2d42;
+            --text-muted: #6c757d;
+            --accent-color: #c9184a; /* Aipan Art Red */
+            --card-bg: rgba(255, 255, 255, 0.65);
+            --border-color: rgba(0, 0, 0, 0.08);
+            
+            --font-head: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+            
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         body.dark-mode {
-            --bg: #0d0d0d;
-            --ink: #f0f0f0;
-            --paper: #1a1a1a;
-            --shadow: 10px 10px 0px #000;
-            --border: 4px solid #f0f0f0;
-            --accent-red: #ff3333;
+            /* Dark theme - Deep valleys & night sky */
+            --bg-color: #121420;
+            --text-main: #f8f9fa;
+            --text-muted: #adb5bd;
+            --card-bg: rgba(30, 33, 45, 0.65);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --accent-color: #ff4d6d;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            border-radius: 0;
-        }
-
-        /* CUSTOM CURSOR SYSTEM (Mangaka G-Pen) */
-        @media (pointer: fine) {
-            * {
-                cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M0,0 C6,2 14,8 18,14 L14,26 L10,20 L4,14 C2,8 0,4 0,0" fill="%23fff" stroke="%23050505" stroke-width="1.5"/><circle cx="10" cy="14" r="1.5" fill="%23050505"/><line x1="0" y1="0" x2="10" y2="14" stroke="%23050505" stroke-width="1.5"/></svg>') 0 0, crosshair !important;
-            }
         }
 
         body {
-            background-color: var(--bg);
-            color: var(--ink);
+            background-color: var(--bg-color);
+            color: var(--text-main);
             font-family: var(--font-body);
             overflow-x: hidden;
-            transition: 0.3s ease;
+            transition: background-color 0.4s ease, color 0.4s ease;
+            line-height: 1.7;
             position: relative;
         }
 
-        /* TRUE MANGA SCREENTONE (Halftone) */
-        body::before {
-            content: "";
+        /* BACKGROUND ELEMENTS: MOUNTAINS (GARHWAL HIMALAYAS VIBES) & CHERRY BLOSSOMS */
+        .mountain-bg {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60vh;
+            /* Jagged mountain peaks inspired by Nanda Devi & Garhwal ranges */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23c9184a' fill-opacity='0.05' d='M0,320 L150,150 L250,220 L400,80 L550,250 L650,180 L800,50 L950,200 L1100,100 L1250,220 L1440,90 L1440,320 Z' /%3E%3Cpath fill='%23c9184a' fill-opacity='0.03' d='M0,320 L100,200 L200,250 L350,100 L500,280 L600,200 L750,80 L900,220 L1050,150 L1200,250 L1440,150 L1440,320 Z' /%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: bottom;
+            z-index: -2;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        body.dark-mode .mountain-bg {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ff4d6d' fill-opacity='0.05' d='M0,320 L150,150 L250,220 L400,80 L550,250 L650,180 L800,50 L950,200 L1100,100 L1250,220 L1440,90 L1440,320 Z' /%3E%3Cpath fill='%23ff4d6d' fill-opacity='0.03' d='M0,320 L100,200 L200,250 L350,100 L500,280 L600,200 L750,80 L900,220 L1050,150 L1200,250 L1440,150 L1440,320 Z' /%3E%3C/svg%3E");
+        }
+
+        #cherry-blossom-canvas {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: radial-gradient(var(--ink) 1px, transparent 1px);
-            background-size: 10px 10px;
-            opacity: 0.15;
+            width: 100vw;
+            height: 100vh;
             pointer-events: none;
-            z-index: 9999;
+            z-index: -1;
         }
 
-        /* ACTION/SPEED LINES FOR HERO */
-        .hero-section {
-            position: relative;
-            overflow: hidden;
-            padding-top: 50px;
-        }
-
-        .hero-section::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 250vw;
-            height: 250vh;
-            transform: translate(-50%, -50%);
-            background: repeating-conic-gradient(from 0deg,
-                    transparent 0deg 2deg,
-                    rgba(0, 0, 0, 0.06) 3deg 4deg);
-            pointer-events: none;
-            z-index: 0;
-            animation: spinAction 120s linear infinite;
-        }
-
-        body.dark-mode .hero-section::after {
-            background: repeating-conic-gradient(from 0deg,
-                    transparent 0deg 2deg,
-                    rgba(255, 255, 255, 0.03) 3deg 4deg);
-        }
-
-        @keyframes spinAction {
-            100% {
-                transform: translate(-50%, -50%) rotate(360deg);
-            }
-        }
-
-        /* UTILS */
+        /* LAYOUT */
         .container {
-            width: min(90%, 1200px);
+            width: min(90%, 1100px);
             margin: 0 auto;
             position: relative;
             z-index: 10;
         }
 
         section {
-            padding: clamp(50px, 8vw, 100px) 0;
+            padding: 100px 0;
         }
 
-        /* BUTTONS */
-        .btn-comic {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background: var(--ink);
-            color: var(--bg);
-            border: var(--border);
-            padding: 12px 25px;
-            font-weight: 900;
+        h1, h2, h3 {
             font-family: var(--font-head);
-            text-decoration: none;
-            text-transform: uppercase;
-            box-shadow: var(--shadow);
-            transition: 0.15s;
-            white-space: nowrap;
-            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
-            border-radius: var(--manga-radius);
-            transform: skew(-2deg);
+            font-weight: 700;
         }
 
-        .btn-comic:hover {
-            transform: translate(-5px, -5px) skew(-2deg);
-            box-shadow: 15px 15px 0px var(--accent-red);
-            background: var(--accent-red);
-            color: #fff;
-            border-color: var(--ink);
-        }
-
-        /* HEADERS */
-        .chapter-title {
-            font-family: var(--font-head);
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 900;
-            letter-spacing: 3px;
-            background: var(--ink);
-            border: 5px solid #fff;
-            color: var(--bg);
-            padding: 15px 40px;
-            display: inline-block;
+        /* AIPAN ART INSPIRED SECTION TITLES */
+        .section-title {
+            font-size: 2.8rem;
             margin-bottom: 60px;
-            box-shadow: 12px 12px 0px var(--accent-red);
-            transform: rotate(-3deg) scale(1.05);
-            text-transform: uppercase;
-            clip-path: polygon(1% 0%, 99% -2%, 100% 88%, 90% 100%, 0% 95%, 0% 10%);
+            color: var(--text-main);
+            text-align: center;
             position: relative;
         }
 
-        body.dark-mode .chapter-title {
-            color: var(--ink);
-            border-color: var(--bg);
+        .section-title::after {
+            content: '↟ ─── ✧ ─── ↟'; /* Garhwal Pine/Mountain Motif */
+            display: block;
+            margin-top: 15px;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            opacity: 0.8;
+            font-family: var(--font-body);
         }
 
-        /* CARDS (Hand-drawn Panels + Menacing Hover) */
-        .comic-card {
-            background: var(--paper);
-            border: var(--border);
-            border-radius: var(--manga-radius);
-            padding: 30px;
-            box-shadow: var(--shadow);
-            transition: 0.2s;
-            position: relative;
-            overflow: hidden;
-            /* For the hovering text */
+        /* HERO SECTION */
+        .hero-section {
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+            padding-top: 80px;
         }
 
-        .comic-card * {
-            position: relative;
-            z-index: 2;
-            /* Keep text above the menacing element */
-        }
-
-        /* The Menacing Text "GOGOGO" Element */
-        .comic-card::after {
-            content: 'ゴゴゴゴ';
-            position: absolute;
-            bottom: -20px;
-            right: -20px;
-            font-size: 4.5rem;
-            font-weight: 900;
-            color: var(--accent-red);
-            opacity: 0;
-            transform: scale(0) rotate(-15deg);
-            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            z-index: 0;
-            pointer-events: none;
-            font-family: 'Space Grotesk', sans-serif;
-            -webkit-text-stroke: 1px var(--ink);
-            line-height: 1;
-        }
-
-        .comic-card:hover {
-            transform: translate(-6px, -6px);
-            box-shadow: 16px 16px 0px var(--accent-red);
-            border-color: var(--accent-red);
-        }
-
-        .comic-card:hover::after {
-            opacity: 0.2;
-            /* Distinct but subtle Action text */
-            transform: scale(1) rotate(-5deg);
-            bottom: 5px;
-            right: 5px;
-        }
-
-        body.dark-mode .comic-card:hover::after {
-            opacity: 0.4;
-        }
-
-        .comic-card h3 {
-            font-family: var(--font-head);
-            font-weight: 900;
-            font-size: 1.4rem;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            display: inline-block;
-            box-shadow: inset 0 -10px 0 var(--accent-red);
-        }
-
-        /* SPEECH BUBBLE TAGS */
-        .card-tag {
-            background: var(--accent-red);
-            color: #fff;
-            font-weight: 900;
-            font-family: var(--font-head);
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            padding: 6px 15px;
-            display: inline-block;
-            margin-bottom: 15px;
-            border: 3px solid var(--ink);
-            border-radius: 50% 50% 50% 10% / 50% 50% 50% 10%;
-            /* Jagged bubble */
-            position: relative;
-            transform: rotate(-2deg);
-        }
-
-        /* HERO GRID */
         .hero-grid {
             display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            grid-template-rows: auto auto auto;
-            gap: 25px;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            align-items: center;
         }
 
-        .panel {
-            border: var(--border);
-            background: var(--paper);
-            border-radius: var(--manga-radius);
-            padding: 35px;
-            box-shadow: var(--shadow);
-            position: relative;
-            overflow: hidden;
+        .hero-content h1 {
+            font-size: clamp(3.5rem, 6vw, 5.5rem);
+            line-height: 1.05;
+            margin-bottom: 25px;
+            color: var(--text-main);
+            letter-spacing: -1px;
         }
 
-        .hero-name {
-            font-family: var(--font-head);
-            font-size: clamp(3rem, 12vw, 6rem);
-            line-height: 0.9;
-            color: var(--bg);
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            font-weight: 900;
-            text-shadow: 6px 6px 0px var(--accent-red);
-            word-break: normal;
         }
 
-        /* INTERACTIVE HERO IMAGE REVEAL */
-        .hero-image-wrapper {
+        .hero-desc {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+            max-width: 500px;
+            font-weight: 300;
+        }
+
+        .hero-locations {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 40px;
+            font-size: 1rem;
+            color: var(--text-main);
+            font-weight: 500;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            padding: 15px 25px;
+            border-radius: 50px;
+            border: 1px solid var(--border-color);
+            display: inline-flex;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+        }
+
+        .hero-locations i {
+            color: var(--accent-color);
+            margin-right: 6px;
+        }
+
+        .hero-img-wrapper {
             position: relative;
-            width: 100%;
-            height: 100%;
-            border-radius: var(--manga-radius);
+            border-radius: 30px;
             overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+        }
+        
+        .hero-img-wrapper::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.2);
+            pointer-events: none;
         }
 
         .hero-img {
             width: 100%;
-            height: 100%;
+            height: auto;
+            display: block;
             object-fit: cover;
+            border-radius: 30px;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .hero-img-wrapper:hover .hero-img {
+            transform: scale(1.05);
+        }
+
+        /* BUTTONS & LINKS */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent-color);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            box-shadow: 0 10px 20px rgba(201, 24, 74, 0.2);
+        }
+
+        body.dark-mode .btn {
+            box-shadow: 0 10px 20px rgba(255, 77, 109, 0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(201, 24, 74, 0.3);
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 35px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            color: var(--text-main);
+            font-size: 1.2rem;
+            text-decoration: none;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+
+        .social-links a:hover {
+            background: var(--text-main);
+            color: var(--bg-color);
+            transform: translateY(-5px);
+        }
+
+        /* GLASSMORPHISM CARDS */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.03);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), transparent);
+            opacity: 0;
+            transition: var(--transition);
         }
 
-        .hero-img.base {
-            filter: grayscale(0%) contrast(1.1);
-            /* The colored reveal version */
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 45px rgba(0,0,0,0.06);
+            border-color: rgba(201, 24, 74, 0.2);
         }
 
-        .hero-img.overlay {
-            filter: grayscale(100%) contrast(1.5) brightness(0.9);
-            z-index: 2;
-            transition: clip-path 0.4s cubic-bezier(0.85, 0, 0.15, 1);
-            clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+        .card:hover::before {
+            opacity: 1;
         }
 
-        .hero-image-wrapper:hover .overlay {
-            clip-path: polygon(0 0, 0 0%, 0% 100%, 0% 100%);
-            /* Slides away instantly */
+        .card-tag {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: inline-block;
         }
 
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .card .timeline {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            display: block;
+            font-weight: 500;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            flex-grow: 1;
+            font-weight: 300;
+        }
+
+        .card-action {
+            margin-top: 25px;
+        }
+
+        .card-action .btn {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--text-main);
+            padding: 8px 20px;
+            box-shadow: none;
+            font-size: 0.9rem;
+        }
+
+        .card-action .btn:hover {
+            background: var(--text-main);
+            color: var(--bg-color);
+        }
+
+        /* GRADE BADGES */
+        .grade-badges {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .grade-badge {
+            background: var(--bg-color);
+            color: var(--text-main);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid var(--border-color);
+            font-weight: 500;
+        }
 
         /* THEME TOGGLE */
         .theme-toggle {
             position: fixed;
-            top: 25px;
-            right: 25px;
-            z-index: 10000;
-            font-size: 1.5rem;
-            background: var(--ink);
-            color: var(--bg);
-            border: var(--border);
-            border-radius: 50%;
+            top: 35px;
+            right: 35px;
             width: 55px;
             height: 55px;
-            display: grid;
-            place-items: center;
-            box-shadow: 6px 6px 0 var(--accent-red);
-            transition: 0.2s;
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.1) rotate(-10deg);
-            background: var(--accent-red);
-            color: #fff;
-        }
-
-        /* INK SPLATTER CLASS */
-        .ink-splatter {
-            position: fixed;
-            width: 100px;
-            height: 100px;
-            /* A gritty comic splatter SVG */
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M45,15 C40,25 35,30 15,35 C30,40 40,50 45,75 C50,50 60,40 75,35 C55,30 50,25 45,15 Z' fill='%23b30000'/%3E%3Ccircle cx='20' cy='20' r='6' fill='%23b30000'/%3E%3Ccircle cx='80' cy='80' r='10' fill='%23b30000'/%3E%3Ccircle cx='85' cy='20' r='5' fill='%23b30000'/%3E%3C/svg%3E");
-            background-size: contain;
-            background-repeat: no-repeat;
-            pointer-events: none;
-            z-index: 99999;
-            transform-origin: center;
-            animation: splatterPop 0.4s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
-        }
-
-        @keyframes splatterPop {
-            0% {
-                opacity: 1;
-                transform: translate(-50%, -50%) scale(0) rotate(var(--rot));
-            }
-
-            100% {
-                opacity: 0;
-                transform: translate(-50%, -50%) scale(1.5) rotate(var(--rot));
-            }
-        }
-
-        /* FLOATING ARCADE SCORE */
-        .floating-score {
-            position: fixed;
-            font-family: var(--font-head);
-            font-weight: 900;
-            color: #fff;
-            -webkit-text-stroke: 1px #000;
-            font-size: 2rem;
-            text-shadow: 4px 4px 0 var(--accent-red);
-            pointer-events: none;
-            z-index: 100000;
-            animation: floatScore 1s forwards;
-            user-select: none;
-        }
-
-        @keyframes floatScore {
-            0% {
-                opacity: 1;
-                transform: translate(-50%, -50%) scale(0.5);
-            }
-
-            10% {
-                transform: translate(-50%, -50%) scale(1.2);
-            }
-
-            100% {
-                opacity: 0;
-                transform: translate(-50%, -150%) scale(1);
-            }
-        }
-
-        /* ARCADE RUNNER Restored */
-        .arcade-wrap {
-            position: fixed;
-            left: -200px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
             display: flex;
             align-items: center;
-            gap: 40px;
-            pointer-events: auto;
-            /* Made clickable! */
-            z-index: 0;
-            opacity: 0.15;
-            animation: runAcross 15s linear infinite;
-            image-rendering: pixelated;
+            justify-content: center;
+            font-size: 1.3rem;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+        
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(15deg);
         }
 
-        .arcade-wrap:hover {
-            opacity: 0.5;
-            transform: scale(1.1);
-        }
-
-        .chomper {
-            width: 48px;
-            height: 48px;
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Cpath fill='%23FFD700' d='M6,1h4v1h2v1h1v2h1v4h-1v2h-1v1h-2v1h-4v-1h-2v-1h-1v-2h-1v-4h1v-2h1v-1h2v-1z M12,7h-6v2h6v-2z'/%3E%3C/svg%3E");
-            animation: chomp8bit 0.2s steps(2) infinite;
-        }
-
-        .ghost {
-            width: 48px;
-            height: 48px;
-            background-repeat: no-repeat;
-            background-size: contain;
-            position: relative;
-            animation: wiggle8bit 0.4s steps(2) infinite;
-        }
-
-        .ghost-red {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Cpath fill='%23FF0000' d='M6,1h4v1h2v1h1v2h1v7h-1v1h-1v-1h-1v1h-2v-1h-1v1h-2v-1h-1v1h-1v-1h-1v-7h1v-2h1v-1h2v-1z'/%3E%3Crect x='4' y='4' width='2' height='2' fill='%23FFF'/%3E%3Crect x='6' y='5' width='1' height='1' fill='%2300F'/%3E%3Crect x='10' y='4' width='2' height='2' fill='%23FFF'/%3E%3Crect x='12' y='5' width='1' height='1' fill='%2300F'/%3E%3C/svg%3E");
-        }
-
-        .ghost-pink {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Cpath fill='%23FFB8FF' d='M6,1h4v1h2v1h1v2h1v7h-1v1h-1v-1h-1v1h-2v-1h-1v1h-2v-1h-1v1h-1v-1h-1v-7h1v-2h1v-1h2v-1z'/%3E%3Crect x='4' y='4' width='2' height='2' fill='%23FFF'/%3E%3Crect x='6' y='5' width='1' height='1' fill='%2300F'/%3E%3Crect x='10' y='4' width='2' height='2' fill='%23FFF'/%3E%3Crect x='12' y='5' width='1' height='1' fill='%2300F'/%3E%3C/svg%3E");
-        }
-
-        .ghost-cyan {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Cpath fill='%2300FFFF' d='M6,1h4v1h2v1h1v2h1v7h-1v1h-1v-1h-1v1h-2v-1h-1v1h-2v-1h-1v1h-1v-1h-1v-7h1v-2h1v-1h2v-1z'/%3E%3Crect x='4' y='4' width='2' height='2' fill='%23FFF'/%3E%3Crect x='6' y='5' width='1' height='1' fill='%2300F'/%3E%3Crect x='10' y='4' width='2' height='2' fill='%23FFF'/%3E%3Crect x='12' y='5' width='1' height='1' fill='%2300F'/%3E%3C/svg%3E");
-        }
-
-        .ghost-orange {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Cpath fill='%23FFB852' d='M6,1h4v1h2v1h1v2h1v7h-1v1h-1v-1h-1v1h-2v-1h-1v1h-2v-1h-1v1h-1v-1h-1v-7h1v-2h1v-1h2v-1z'/%3E%3Crect x='4' y='4' width='2' height='2' fill='%23FFF'/%3E%3Crect x='6' y='5' width='1' height='1' fill='%2300F'/%3E%3Crect x='10' y='4' width='2' height='2' fill='%23FFF'/%3E%3Crect x='12' y='5' width='1' height='1' fill='%2300F'/%3E%3C/svg%3E");
-        }
-
-        .cherry {
-            width: 48px;
-            height: 48px;
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Cpath fill='%2300aa00' d='M10,1h1v1h1v2h-1v1h-1v-1h-1v-1h-1v2h-1v1h-1v1h-1v1H4v3h1v1h1v1h3v-1h1v-1h1v-3h-1v-1h-1v-1h1v-2h1v-2h-1v-1H10z'/%3E%3Cpath fill='%23ff0000' d='M2,10h3v1h1v1h1v3h-1v1h-3v-1h-1v-1h-1v-3h1v-1z M10,10h3v1h1v1h1v3h-1v1h-3v-1h-1v-1h-1v-3h1v-1z'/%3E%3Cpath fill='%23fff' d='M3,11h1v1h-1v-1z M11,11h1v1h-1v-1z'/%3E%3C/svg%3E");
-        }
-
-        .pellet {
-            width: 12px;
-            height: 12px;
-            background: #FFD700;
-            position: relative;
-            top: 18px;
-            border: 2px solid #000;
-        }
-
-        @keyframes runAcross {
-            from {
-                left: -200px;
-            }
-
-            to {
-                left: 100vw;
-            }
-        }
-
-        @keyframes chomp8bit {
-            0% {
-                transform: scaleY(1);
-            }
-
-            50% {
-                transform: scaleY(0.7);
-            }
-
-            100% {
-                transform: scaleY(1);
-            }
-        }
-
-        @keyframes wiggle8bit {
-            0% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-4px);
-            }
-
-            100% {
-                transform: translateY(0);
-            }
-        }
-
-        body.eclipse-mode {
-            --bg: #4a0000;
-            --ink: #fff;
-            --paper: #0a0a0a;
-            --accent-red: #ff0000;
-            --pop-yellow: #000;
-            animation: quake 0.8s cubic-bezier(.36, .07, .19, .97) both;
-        }
-
-        body.eclipse-mode::before {
-            content: '';
-            background-color: #8b0000;
-            opacity: 0.9;
-            mix-blend-mode: multiply;
-        }
-
-        body.eclipse-mode .hero-section::after {
-            background: repeating-conic-gradient(from 0deg, transparent 0deg 2deg, rgba(255, 0, 0, 0.2) 3deg 4deg);
-            animation: spinAction 5s linear infinite;
-        }
-
-        body.eclipse-mode #arcade-scoreboard {
-            background: #000;
-            color: #ff0000;
-            border-color: #ff0000;
-            animation: pulse-score 0.3s infinite alternate;
-        }
-
-        @keyframes pulse-score {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 0 10px #ff0000;
-            }
-
-            100% {
-                transform: scale(1.1) rotate(2deg);
-                box-shadow: 0 0 40px #ff0000;
-            }
-        }
-
-        @keyframes quake {
-
-            10%,
-            90% {
-                transform: translate3d(-10px, 0, 0);
-            }
-
-            20%,
-            80% {
-                transform: translate3d(15px, 0, 0);
-            }
-
-            30%,
-            50%,
-            70% {
-                transform: translate3d(-20px, 0, 0);
-            }
-
-            40%,
-            60% {
-                transform: translate3d(20px, 0, 0);
-            }
-        }
-
-        /* TABLET OPTIMIZATION */
-        @media (max-width: 1024px) {
+        /* RESPONSIVE */
+        @media (max-width: 960px) {
             .hero-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .container {
-                width: 95%;
-            }
-        }
-
-        /* MOBILE FIXES */
-        @media (max-width: 768px) {
-            body {
-                width: 100vw;
-                max-width: 100%;
-            }
-
-            .hero-grid {
-                display: flex;
-                flex-direction: column;
-            }
-
-            .chapter-title {
-                padding: 10px 20px;
-                width: 100%;
                 text-align: center;
-                transform: rotate(0deg) scale(1);
+                gap: 40px;
             }
-
-            .panel {
-                padding: 25px;
+            .hero-title-wrap {
+                order: 2;
             }
-
-            .container {
-                width: 96%;
+            .hero-img-wrap {
+                order: 1;
+                max-width: 450px;
+                margin: 0 auto;
             }
-
-            .theme-toggle {
-                top: 15px;
-                right: 15px;
-                width: 45px;
-                height: 45px;
-                font-size: 1.2rem;
+            .hero-desc {
+                margin: 0 auto 35px;
             }
-
-            .btn-comic {
-                width: 100%;
-                min-height: 48px;
-                /* Touch target minimum */
+            .hero-locations {
+                margin-left: auto;
+                margin-right: auto;
             }
-
-            section {
-                padding: 60px 0;
+            .social-links {
+                justify-content: center;
             }
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
 
-            .contact-panel {
+        @media (max-width: 600px) {
+            .hero-locations {
                 flex-direction: column;
-                gap: 25px;
-                text-align: center;
-                padding: 30px !important;
-            }
-        }
-
-        /* ARCADE SCOREBOARD UI */
-        #arcade-scoreboard {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            font-family: var(--font-head);
-            font-weight: 900;
-            font-size: 1rem;
-            color: var(--ink);
-            text-shadow: 1px 1px 0px var(--bg), -1px -1px 0px var(--bg), 1px -1px 0px var(--bg), -1px 1px 0px var(--bg);
-            opacity: 0.4;
-            z-index: 10000;
-            pointer-events: none;
-            transition: all 0.2s ease;
-            letter-spacing: 2px;
-            -webkit-user-select: none;
-            user-select: none;
-        }
-
-        #arcade-scoreboard.flash {
-            opacity: 1;
-            color: var(--accent-red);
-            transform: scale(1.2) rotate(-2deg);
-            text-shadow: 2px 2px 0px var(--bg), -2px -2px 0px var(--bg), 2px -2px 0px var(--bg), -2px 2px 0px var(--bg);
-        }
-
-        @media (max-width: 768px) {
-            #arcade-scoreboard {
-                bottom: auto;
-                top: 15px;
-                left: 15px;
-                font-size: 0.8rem;
+                gap: 15px;
+                background: transparent;
+                box-shadow: none;
+                border: none;
+                padding: 0;
             }
         }
     </style>
 </head>
+<body class="dark-mode">
 
-<body>
-    <!-- ARCADE TRIBUTE -->
-    <div id="arcade-container"></div>
-    <div id="arcade-scoreboard">SCORE: <span id="arcade-score-val">0</span></div>
+    <!-- Cherry Blossom Animation Canvas -->
+    <canvas id="cherry-blossom-canvas"></canvas>
+    
+    <!-- Uttarakhand Mountains Silhoutte via SVG -->
+    <div class="mountain-bg"></div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const container = document.getElementById('arcade-container');
-            const types = ['chase', 'ghost', 'fruit', 'swarm'];
-            let globalArcadeScore = 0;
-            let eclipseTriggered = false;
-            let spawnSpeedMultiplier = 1;
-
-            function createEntity(type) {
-                const wrap = document.createElement('div');
-                wrap.className = 'arcade-wrap';
-                wrap.setAttribute('aria-hidden', 'true');
-                wrap.style.top = Math.random() * 85 + 'vh';
-                wrap.style.animationDuration = ((Math.random() * 8 + 12) / spawnSpeedMultiplier) + 's';
-                wrap.style.zIndex = '0';
-
-                if (type === 'chase') {
-                    const ghosts = ['ghost-red', 'ghost-pink', 'ghost-cyan', 'ghost-orange'];
-                    const ghostType = ghosts[Math.floor(Math.random() * ghosts.length)];
-                    wrap.innerHTML = `<div class="ghost ${ghostType}"></div><div class="chomper"></div>`;
-                } else if (type === 'ghost') {
-                    const ghosts = ['ghost-red', 'ghost-pink', 'ghost-cyan', 'ghost-orange'];
-                    const ghostType = ghosts[Math.floor(Math.random() * ghosts.length)];
-                    wrap.innerHTML = `<div class="ghost ${ghostType}"></div>`;
-                } else if (type === 'fruit') {
-                    wrap.innerHTML = `<div class="cherry"></div>`;
-                } else if (type === 'swarm') {
-                    wrap.innerHTML = `<div class="pellet"></div><div class="pellet" style="margin-left: 20px"></div><div class="pellet" style="margin-left: 20px"></div>`;
-                }
-
-                wrap.addEventListener('click', (e) => {
-                    e.stopPropagation(); // Prevent background splatter
-                    if (navigator.vibrate) navigator.vibrate(50); // Haptic impact
-
-                    // Dynamic Score Logic
-                    let pointsEarned = 200;
-                    if (type === 'fruit') pointsEarned = 500;
-                    else if (type === 'chase') pointsEarned = 300;
-                    else if (type === 'swarm') pointsEarned = 100;
-
-                    globalArcadeScore += pointsEarned;
-
-                    if (globalArcadeScore >= 5000 && !eclipseTriggered) {
-                        eclipseTriggered = true;
-                        document.body.classList.add('eclipse-mode');
-                        spawnSpeedMultiplier = 4; // Massively speed up Arcade spanning
-
-                        const board = document.getElementById('arcade-scoreboard');
-                        if (board) {
-                            board.innerHTML = 'SCORE: <span id="arcade-score-val" style="color:red;">SURVIVE.</span>';
-                            board.classList.add('flash');
-                        }
-                    } else if (!eclipseTriggered) {
-                        // Update Persistent Scoreboard normally
-                        const board = document.getElementById('arcade-scoreboard');
-                        if (board) {
-                            document.getElementById('arcade-score-val').innerText = globalArcadeScore;
-                            board.classList.add('flash');
-                            setTimeout(() => board.classList.remove('flash'), 100);
-                        }
-                    }
-
-                    // Spawn Floating Score Text
-                    const score = document.createElement('div');
-                    score.innerText = '+' + pointsEarned;
-                    score.className = 'floating-score';
-                    score.style.left = e.clientX + 'px';
-                    score.style.top = e.clientY + 'px';
-                    document.body.appendChild(score);
-
-                    setTimeout(() => score.remove(), 1000);
-                    wrap.remove();
-                });
-
-                container.appendChild(wrap);
-                setTimeout(() => { wrap.remove(); }, 30000);
-            }
-
-            for (let i = 0; i < 6; i++) {
-                (function loop() {
-                    const randomType = types[Math.floor(Math.random() * types.length)];
-                    createEntity(randomType);
-                    setTimeout(loop, (Math.random() * 4000 + 2000) / spawnSpeedMultiplier);
-                })();
-            }
-
-
-            // INK SPLATTER BACKGROUND CLICK
-            document.addEventListener('click', (e) => {
-                // Ignore clicks on arcade characters or buttons/links so effects don't overlap awkwardly
-                if (e.target.closest('a') || e.target.closest('.theme-toggle') || e.target.closest('.arcade-wrap')) return;
-
-                if (navigator.vibrate) navigator.vibrate(20); // Soft touch Haptic Feedback
-
-                const splatter = document.createElement('div');
-                splatter.className = 'ink-splatter';
-
-                // Randomize tilt specifically using CSS custom property for animation
-                const angle = Math.floor(Math.random() * 360);
-                splatter.style.setProperty('--rot', angle + 'deg');
-
-                // Set fixed position
-                splatter.style.left = e.clientX + 'px';
-                splatter.style.top = e.clientY + 'px';
-
-                document.body.appendChild(splatter);
-
-                // Garbage collect cleanly after animation
-                setTimeout(() => splatter.remove(), 450);
-            });
-        });
-    </script>
-
-    <div class="theme-toggle" id="theme-btn"><i class="fa-solid fa-moon"></i></div>
+    <!-- Theme Selection -->
+    <div class="theme-toggle" id="theme-btn"><i class="fa-solid fa-sun"></i></div>
 
     <div id="smooth-wrapper">
         <div id="smooth-content">
 
-            <!-- HERO: THE ORIGIN -->
+            <!-- HERO SECTION -->
             <section class="hero-section">
                 <div class="container">
                     <div class="hero-grid">
-                        <div class="panel" style="background: var(--ink); color: var(--bg);">
-                            <span
-                                style="font-weight: 900; text-transform: uppercase; letter-spacing: 3px; color: var(--accent-red); font-family: var(--font-head); font-size: 1.2rem;">The
-                                Protagonist</span>
-                            <h1 class="hero-name" style="margin-top: 10px;">Himanshu<br>Gaur</h1>
-                        </div>
-
-                        <div class="panel"
-                            style="grid-row: 1/4; grid-column: 2/3; padding: 0; border: none; overflow: hidden; position: relative;">
-                            <div class="hero-image-wrapper">
-                                <img src="./profile.jpg" class="hero-img base">
-                                <img src="./profile.jpg" class="hero-img overlay">
+                        <div class="hero-title-wrap hero-content">
+                            <div class="hero-subtitle">Assistant Professor & Economist</div>
+                            <h1>Himanshu Gaur</h1>
+                            
+                            <div class="hero-locations">
+                                <span><i class="fa-solid fa-location-dot"></i> Mumbai, MH</span>
+                                <span><i class="fa-solid fa-mountain-sun"></i> Dehradun, UK</span>
                             </div>
-                        </div>
 
-                        <div class="panel" style="font-size: 1.2rem; line-height: 1.6;">
-                            <p>
-                                <strong>Identity:</strong> UGC NET Qualified Assistant Professor & Economist.<br>
-                                <strong>Mission:</strong> Merging economic theory with data science to decode markets
-                                and educate the next generation.<br>
-                                <strong>Status:</strong> Available for Research & Teaching.
+                            <p class="hero-desc">
+                                I am an Economist, Researcher, and UGC NET Qualified Assistant Professor. My work intersects economic theory with data-driven insights to analyze markets and equip the next generation with actionable knowledge.
                             </p>
-                        </div>
-
-                        <div class="panel contact-panel"
-                            style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                            <a href="mailto:cliquehimanshu@gmail.com" class="btn-comic"
-                                style="flex: 1; max-width: 250px;">
-                                <i class="fa-solid fa-envelope"></i> Contact Me
+                            
+                            <a href="mailto:cliquehimanshu@gmail.com" class="btn">
+                                <i class="fa-solid fa-envelope"></i> Connect via Email
                             </a>
-                            <a href="https://linkedin.com/in/thisishimanshu" target="_blank"
-                                style="font-size: 2.5rem; color: var(--ink); transition: 0.2s;"><i
-                                    class="fa-brands fa-linkedin"></i></a>
-                            <a href="https://www.researchgate.net/profile/Himanshu-Gaur-11?ev=hdr_xprf" target="_blank"
-                                style="font-size: 2.5rem; color: var(--ink); transition: 0.2s;"><i
-                                    class="fa-brands fa-researchgate"></i></a>
-                            <a href="https://github.com/oghimanshu" target="_blank"
-                                style="font-size: 2.5rem; color: var(--ink); transition: 0.2s;"><i
-                                    class="fa-brands fa-github"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
-            <!-- EXPERIENCE ARC -->
-            <section>
-                <div class="container">
-                    <div class="chapter-title">Experience Arc</div>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-                        <div class="comic-card">
-                            <div class="card-tag">Current Mission</div>
-                            <h3>Assistant Professor</h3>
-                            <p style="font-weight: 700; margin-bottom: 10px; color: var(--accent-red);">Pillai College •
-                                June 2025 - Present</p>
-                            <p>- Mentoring students on research projects.<br>- Publishing peer-reviewed papers.<br>-
-                                Engaging with diverse communities.</p>
-                        </div>
-                        <div class="comic-card">
-                            <div class="card-tag">Prior Role</div>
-                            <h3>Finance Intern</h3>
-                            <p style="font-weight: 700; margin-bottom: 10px; color: var(--accent-red);">LetsTute • Jan -
-                                Mar 2024</p>
-                            <p>- Simplified financial markets.<br>- Created educational content.<br>- Formulated case
-                                studies.</p>
-                        </div>
-                        <div class="comic-card">
-                            <div class="card-tag">Leadership</div>
-                            <h3>General Secretary</h3>
-                            <p style="font-weight: 700; margin-bottom: 10px; color: var(--accent-red);">Commerce and
-                                Economics Association</p>
-                            <p>- Spearheaded research competitions.<br>- Managed investment workshops.</p>
-                        </div>
-                        <div class="comic-card">
-                            <div class="card-tag">Volunteering</div>
-                            <h3>Peer Guide</h3>
-                            <p style="font-weight: 700; margin-bottom: 10px; color: var(--accent-red);">Akshara Centre •
-                                2021-22</p>
-                            <p>- Gender sensitization workshops.<br>- Civil rights awareness training.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- EDUCATION STATS -->
-            <section>
-                <div class="container">
-                    <div class="chapter-title"
-                        style="background: var(--pop-yellow); color: #000; clip-path: polygon(0 0, 100% 5%, 95% 100%, 5% 95%);">
-                        Power Stats</div>
-                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px;">
-                        <div class="comic-card">
-                            <h3>MA Business Economics</h3>
-                            <p style="margin-bottom: 15px; font-weight: bold;">SIES College • 2023-2025</p>
-                            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                                <span
-                                    style="border: 3px solid var(--ink); padding: 5px 10px; font-weight: 900; background: #fff; color: #000; transform: rotate(-2deg); display: inline-block;">Sem
-                                    1: 9.64</span>
-                                <span
-                                    style="border: 3px solid var(--ink); padding: 5px 10px; font-weight: 900; background: #fff; color: #000; transform: rotate(1deg); display: inline-block;">Sem
-                                    2: 10.0</span>
-                                <span
-                                    style="border: 3px solid var(--ink); padding: 5px 10px; font-weight: 900; background: #fff; color: #000; transform: rotate(-1deg); display: inline-block;">Sem
-                                    3: 9.36</span>
-                                <span
-                                    style="border: 3px solid var(--ink); padding: 5px 10px; font-weight: 900; background: #fff; color: #000; transform: rotate(2deg); display: inline-block;">Sem
-                                    4: 9.82</span>
+                            <div class="social-links">
+                                <a href="https://linkedin.com/in/thisishimanshu" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="https://www.researchgate.net/profile/Himanshu-Gaur-11?ev=hdr_xprf" target="_blank"><i class="fa-brands fa-researchgate"></i></a>
+                                <a href="https://github.com/oghimanshu" target="_blank"><i class="fa-brands fa-github"></i></a>
                             </div>
                         </div>
-                        <div class="comic-card">
-                            <h3>BA Economics</h3>
-                            <p style="font-weight: bold;">ICLES' MJ College</p>
-                            <hr style="margin: 15px 0; border: none; border-top: 4px solid var(--ink);">
-                            <p style="font-weight: 900; font-size: 1.5rem; color: var(--accent-red);">Grade: 9.39</p>
+
+                        <div class="hero-img-wrap">
+                            <div class="hero-img-wrapper">
+                                <img src="./profile.jpg" alt="Himanshu Gaur" class="hero-img" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=800&q=80'">
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- THE VAULT -->
+            <!-- EXPERIENCE SECTION -->
             <section>
                 <div class="container">
-                    <div class="chapter-title" style="background: var(--accent-red); color: white;">The Vault</div>
-                    <div
-                        style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px;">
-                        <div class="comic-card" style="background: var(--ink); color: var(--bg);">
-                            <h3 style="color: var(--pop-yellow); box-shadow: none;">UGC NET Qualified</h3>
-                            <p style="font-weight: bold; font-size: 1.1rem; color: #fff;">Assistant Professor</p>
-                            <p style="color: #aaa; margin-top: 5px;">Dec 2024 & Dec 2025</p>
+                    <h2 class="section-title">Professional Journey</h2>
+                    <div class="grid-layout">
+                        <div class="card">
+                            <span class="card-tag">Current Position</span>
+                            <h3>Assistant Professor</h3>
+                            <span class="timeline">Pillai College • June 2025 - Present</span>
+                            <p>Mentoring students on intricate research projects, actively publishing peer-reviewed papers, and continuously engaging with diverse academic communities to foster modern economic literacy.</p>
                         </div>
-                        <a href="https://freecodecamp.org/certification/gaurhimanshu/data-analysis-with-python-v7"
-                            target="_blank" class="comic-card" style="text-decoration: none; color: inherit;">
-                            <h3 style="box-shadow: none;">Data Analysis (Python)</h3>
-                            <p style="font-weight: bold;">freeCodeCamp • 2024</p>
+                        <div class="card">
+                            <span class="card-tag">Internship</span>
+                            <h3>Finance Content Development Intern</h3>
+                            <span class="timeline">LetsTute • Jan - Mar 2024</span>
+                            <p>Simplified complex financial markets for broad audiences, pioneered educational content, and formulated critical case studies for analytical e-learning.</p>
+                        </div>
+                        <div class="card">
+                            <span class="card-tag">Leadership</span>
+                            <h3>General Secretary</h3>
+                            <span class="timeline">Commerce and Economics Association</span>
+                            <p>Spearheaded collegiate research competitions and conceptualized investment workshops encouraging widespread institutional financial literacy.</p>
+                        </div>
+                        <div class="card">
+                            <span class="card-tag">Volunteering</span>
+                            <h3>Peer Guide</h3>
+                            <span class="timeline">Akshara Centre • 2021-22</span>
+                            <p>Orchestrated impact-focused gender sensitization workshops and implemented civic rights awareness training sessions.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- EDUCATION SECTION -->
+            <section>
+                <div class="container">
+                    <h2 class="section-title">Academic Background</h2>
+                    <div class="grid-layout">
+                        <div class="card">
+                            <span class="card-tag">Postgraduate</span>
+                            <h3>MA Business Economics</h3>
+                            <span class="timeline">SIES College • 2023-2025</span>
+                            <p>Advanced study of economic principles meticulously integrated with actionable business strategies and profound market analysis.</p>
+                            <div class="grade-badges">
+                                <span class="grade-badge">Sem 1: 9.64</span>
+                                <span class="grade-badge">Sem 2: 10.0</span>
+                                <span class="grade-badge">Sem 3: 9.36</span>
+                                <span class="grade-badge">Sem 4: 9.82</span>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <span class="card-tag">Undergraduate</span>
+                            <h3>BA Economics</h3>
+                            <span class="timeline">ICLES' MJ College</span>
+                            <p>Cultivated a strong foundational knowledge in macroeconomic frameworks and precise quantitative microeconomics.</p>
+                            <p style="margin-top: 15px; font-size: 1.1rem; font-weight: 600; color: var(--text-main);">Final Assessment Grade: <span style="color: var(--accent-color);">9.39</span></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CERTIFICATIONS SECTION -->
+            <section>
+                <div class="container">
+                    <h2 class="section-title">Certifications & Accolades</h2>
+                    <div class="grid-layout" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px;">
+                        <div class="card" style="padding: 30px;">
+                            <i class="fa-solid fa-award" style="font-size: 2.2rem; color: var(--accent-color); margin-bottom: 20px;"></i>
+                            <h3>UGC NET Qualified</h3>
+                            <span class="timeline">Dec 2024 & Dec 2025</span>
+                            <p style="font-size: 0.9rem;">Assistant Professor Qualification</p>
+                        </div>
+                        <a href="https://freecodecamp.org/certification/gaurhimanshu/data-analysis-with-python-v7" target="_blank" style="text-decoration: none;" class="card">
+                            <i class="fa-brands fa-python" style="font-size: 2.2rem; color: var(--text-main); margin-bottom: 20px;"></i>
+                            <h3>Data Analysis (Python)</h3>
+                            <span class="timeline" style="margin-bottom: 0;">freeCodeCamp • 2024</span>
                         </a>
-                        <a href="https://www.udemy.com/certificate/UC-55907c67-fe63-4628-b8cb-b7b7cf6ad9cb/"
-                            target="_blank" class="comic-card" style="text-decoration: none; color: inherit;">
-                            <h3 style="box-shadow: none;">Rural Marketing</h3>
-                            <p style="font-weight: bold;">Udemy • Jan 2024</p>
+                        <a href="https://www.udemy.com/certificate/UC-55907c67-fe63-4628-b8cb-b7b7cf6ad9cb/" target="_blank" style="text-decoration: none;" class="card">
+                            <i class="fa-solid fa-chart-line" style="font-size: 2.2rem; color: var(--text-main); margin-bottom: 20px;"></i>
+                            <h3>Rural Marketing</h3>
+                            <span class="timeline" style="margin-bottom: 0;">Udemy • Jan 2024</span>
                         </a>
-                        <a href="https://www.udemy.com/certificate/UC-34efda3c-2e6c-460e-98ed-08aa02ac6bd2/"
-                            target="_blank" class="comic-card" style="text-decoration: none; color: inherit;">
-                            <h3 style="box-shadow: none;">Data Vis with R</h3>
-                            <p style="font-weight: bold;">Udemy • Nov 2023</p>
+                        <a href="https://www.udemy.com/certificate/UC-34efda3c-2e6c-460e-98ed-08aa02ac6bd2/" target="_blank" style="text-decoration: none;" class="card">
+                            <i class="fa-solid fa-chart-pie" style="font-size: 2.2rem; color: var(--text-main); margin-bottom: 20px;"></i>
+                            <h3>Data Vis with R</h3>
+                            <span class="timeline" style="margin-bottom: 0;">Udemy • Nov 2023</span>
                         </a>
-                        <a href="https://www.udemy.com/certificate/UC-06ce8c71-39fd-459c-95be-4d488188ef39/"
-                            target="_blank" class="comic-card" style="text-decoration: none; color: inherit;">
-                            <h3 style="box-shadow: none;">Statistics Data</h3>
-                            <p style="font-weight: bold;">Udemy • Sep 2023</p>
+                        <a href="https://www.udemy.com/certificate/UC-06ce8c71-39fd-459c-95be-4d488188ef39/" target="_blank" style="text-decoration: none;" class="card">
+                            <i class="fa-solid fa-square-poll-vertical" style="font-size: 2.2rem; color: var(--text-main); margin-bottom: 20px;"></i>
+                            <h3>Statistics Data</h3>
+                            <span class="timeline" style="margin-bottom: 0;">Udemy • Sep 2023</span>
                         </a>
-                        <a href="https://skillshop.exceedlms.com/student/award/QYGJtYwWdFqT5n75WjaC6iff" target="_blank"
-                            class="comic-card" style="text-decoration: none; color: inherit;">
-                            <h3 style="box-shadow: none;">Digital Marketing</h3>
-                            <p style="font-weight: bold;">Google • July 2021</p>
+                        <a href="https://skillshop.exceedlms.com/student/award/QYGJtYwWdFqT5n75WjaC6iff" target="_blank" style="text-decoration: none;" class="card">
+                            <i class="fa-brands fa-google" style="font-size: 2.2rem; color: var(--text-main); margin-bottom: 20px;"></i>
+                            <h3>Digital Marketing</h3>
+                            <span class="timeline" style="margin-bottom: 0;">Google • July 2021</span>
                         </a>
                     </div>
                 </div>
             </section>
 
-            <!-- RESEARCH & PROJECTS -->
+            <!-- RESEARCH SECTION -->
             <section style="padding-bottom: 120px;">
                 <div class="container">
-                    <div class="chapter-title" style="transform: rotate(2deg);">Research & Projects</div>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-                        <div class="comic-card">
-                            <h3 style="box-shadow: inset 0 -10px 0 var(--pop-yellow);">Subscription Economy</h3>
-                            <p style="margin: 15px 0; font-weight: bold;">A Comparative Study (2025).</p>
-                            <a href="https://www.researchgate.net/publication/395390830_THE_SUBSCRIPTION_ECONOMY_A_COMPARATIVE_STUDY_OF_CONSUMER_PREFERENCES"
-                                target="_blank" class="btn-comic">Read Paper</a>
+                    <h2 class="section-title">Research & Projects</h2>
+                    <div class="grid-layout">
+                        
+                        <!-- NEWLY ADDED PAPER -->
+                        <div class="card">
+                            <span class="card-tag">Latest DOI Publication</span>
+                            <h3>Academic Research Feature</h3>
+                            <span class="timeline">DOI: 10.13140/RG.2.2.22068.62082</span>
+                            <p>An in-depth empirical contribution to ongoing academic discourse in contemporary economic issues and modern financial theories.</p>
+                            <div class="card-action">
+                                <a href="https://doi.org/10.13140/RG.2.2.22068.62082" target="_blank" class="btn">View Document</a>
+                            </div>
                         </div>
-                        <div class="comic-card">
-                            <h3 style="box-shadow: inset 0 -10px 0 var(--pop-yellow);">Space Tourism</h3>
-                            <p style="margin: 15px 0; font-weight: bold;">An Indian Perspective (2023).</p>
-                            <a href="https://www.researchgate.net/publication/396561507_Space_Tourism_An_Indian_Perspective"
-                                target="_blank" class="btn-comic">Read Paper</a>
+
+                        <div class="card">
+                            <span class="card-tag">Publication</span>
+                            <h3>The Subscription Economy</h3>
+                            <span class="timeline">A Comparative Study (2025)</span>
+                            <p>Exploring and contrasting complex consumer preferences derived from the rising digital subscription-based service model globally.</p>
+                            <div class="card-action">
+                                <a href="https://www.researchgate.net/publication/395390830_THE_SUBSCRIPTION_ECONOMY_A_COMPARATIVE_STUDY_OF_CONSUMER_PREFERENCES" target="_blank" class="btn">Read Paper</a>
+                            </div>
                         </div>
-                        <div class="comic-card">
-                            <h3 style="box-shadow: inset 0 -10px 0 var(--pop-yellow);">Mental Accounting</h3>
-                            <p style="margin: 15px 0; font-weight: bold;">Financial Decisions of Women in Navi Mumbai.
-                            </p>
-                            <a href="https://www.researchgate.net/publication/401584967_Mental_Accounting_and_Financial_Decisions_of_Women_in_Navi_Mumbai"
-                                target="_blank" class="btn-comic">Read Paper</a>
+
+                        <div class="card">
+                            <span class="card-tag">Publication</span>
+                            <h3>Space Tourism</h3>
+                            <span class="timeline">An Indian Perspective (2023)</span>
+                            <p>Assessing the market feasibility, regulatory boundaries, and macroscopic economic impact of commercial space tourism in India.</p>
+                            <div class="card-action">
+                                <a href="https://www.researchgate.net/publication/396561507_Space_Tourism_An_Indian_Perspective" target="_blank" class="btn">Read Paper</a>
+                            </div>
                         </div>
-                        <div class="comic-card">
-                            <h3 style="box-shadow: inset 0 -10px 0 var(--pop-yellow);">Python Platform</h3>
-                            <p style="margin: 15px 0; font-weight: bold;">Interactive web platform for Python data
-                                analysis teaching.</p>
-                            <a href="https://oghimanshu.github.io/Data-Analysis-with-Python/" target="_blank"
-                                class="btn-comic">Visit Platform</a>
+
+                        <div class="card">
+                            <span class="card-tag">Publication</span>
+                            <h3>Mental Accounting</h3>
+                            <span class="timeline">Navi Mumbai Regional Study</span>
+                            <p>A statistical analysis breaking down the mental accounting practices and micro-financial decisions of women in modern urban settings.</p>
+                            <div class="card-action">
+                                <a href="https://www.researchgate.net/publication/401584967_Mental_Accounting_and_Financial_Decisions_of_Women_in_Navi_Mumbai" target="_blank" class="btn">Read Paper</a>
+                            </div>
                         </div>
+
+                        <div class="card">
+                            <span class="card-tag">Digital Project</span>
+                            <h3>Python Educational Platform</h3>
+                            <span class="timeline">Interactive Academic Tool</span>
+                            <p>A sophisticated, interactive web platform strategically designed for teaching Python-based data analysis seamlessly to beginners.</p>
+                            <div class="card-action">
+                                <a href="https://oghimanshu.github.io/Data-Analysis-with-Python/" target="_blank" class="btn">Visit Platform</a>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </section>
 
-            <footer
-                style="text-align: center; padding: 50px; border-top: 8px solid var(--ink); background: var(--paper); transform: skewY(-1deg); transform-origin: top left;">
-                <p style="font-weight: 900; font-family: var(--font-head); font-size: 1.2rem; transform: skewY(1deg);">
-                    &copy; 2026 Himanshu Gaur. End of Issue #1.</p>
+            <footer style="text-align: center; padding: 60px 20px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 1rem;">
+                <p>&copy; 2026 Himanshu Gaur. Developed with modern web aesthetics.</p>
+                <p style="margin-top: 5px; font-size: 0.9rem; opacity: 0.7;">⚬ Roots in Dehradun, Operating globally. ⚬</p>
             </footer>
 
         </div>
     </div>
 
     <script>
-        // Smooth Scroll
+        // Smooth Scroll Initialization
         const lenis = new Lenis({ duration: 1.2, smooth: true });
         function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
         requestAnimationFrame(raf);
 
-        // Dark Mode
+        // Dark Mode Toggle Logic
         document.getElementById('theme-btn').addEventListener('click', () => {
-            if (navigator.vibrate) navigator.vibrate(20);
             document.body.classList.toggle('dark-mode');
             const icon = document.querySelector('#theme-btn i');
-            icon.classList.toggle('fa-moon');
-            icon.classList.toggle('fa-sun');
+            if(document.body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
         });
+
+        // 🌸 Highly Optimized Cherry Blossom Animation System 🌸
+        const canvas = document.getElementById('cherry-blossom-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+        
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        const petals = [];
+        const petalCount = window.innerWidth < 768 ? 20 : 45; // Responsive count
+
+        class Petal {
+            constructor() {
+                this.reset();
+                this.y = Math.random() * height; // Initial random spread
+            }
+
+            reset() {
+                this.x = Math.random() * width;
+                this.y = -20;
+                this.size = Math.random() * 6 + 5; // Slightly larger, visible petals
+                this.speedY = Math.random() * 1.5 + 0.8;
+                this.speedX = Math.random() * 2 - 1;
+                this.angle = Math.random() * 360;
+                this.spin = Math.random() * 2 - 1;
+                this.opacity = Math.random() * 0.4 + 0.2;
+                this.wobbleSpeed = Math.random() * 0.05 + 0.01;
+                this.wobblePhase = Math.random() * Math.PI * 2;
+            }
+
+            update() {
+                this.y += this.speedY;
+                // Elegant drifting formula
+                this.x += this.speedX + Math.sin(this.wobblePhase) * 1.2;
+                this.wobblePhase += this.wobbleSpeed;
+                this.angle += this.spin;
+
+                if (this.y > height + 20) {
+                    this.reset();
+                }
+                
+                if (this.x > width + 20) this.x = -20;
+                else if (this.x < -20) this.x = width + 20;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.angle * Math.PI / 180);
+                
+                // Adaptive colors depending on theme
+                const isDark = document.body.classList.contains('dark-mode');
+                // Light mode: soft pink (#ffb7c5). Dark mode: deep saturated pink (#ff4d6d).
+                const r = isDark ? 255 : 255;
+                const g = isDark ? 77 : 183;
+                const b = isDark ? 109 : 197;
+                
+                ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${this.opacity})`;
+                
+                // Elegant petal path rendering
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.quadraticCurveTo(this.size * 1.5, -this.size * 1.5, this.size * 2, 0);
+                ctx.quadraticCurveTo(this.size * 1.5, this.size * 1.5, 0, 0);
+                ctx.fill();
+                
+                ctx.restore();
+            }
+        }
+
+        for (let i = 0; i < petalCount; i++) {
+            petals.push(new Petal());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            for (let i = 0; i < petals.length; i++) {
+                petals[i].update();
+                petals[i].draw();
+            }
+            requestAnimationFrame(animate);
+        }
+
+        animate();
     </script>
 </body>
-
 </html>
