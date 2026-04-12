@@ -62,6 +62,26 @@
             position: relative;
         }
 
+        /* LENIS-STYLE CUSTOM SCROLLBAR */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--text-muted);
+            border-radius: 20px;
+            border: 3px solid var(--bg-color);
+        }
+
+        body.dark-mode ::-webkit-scrollbar-thumb {
+            background: var(--text-main);
+            border: 3px solid var(--bg-color);
+        }
+
         /* BACKGROUND ELEMENTS: MOUNTAINS (GARHWAL HIMALAYAS VIBES) & CHERRY BLOSSOMS */
         .mountain-bg {
             position: fixed;
@@ -76,6 +96,7 @@
             z-index: -2;
             pointer-events: none;
             transition: opacity 0.4s ease;
+            will-change: transform;
         }
 
         body.dark-mode .mountain-bg {
@@ -97,7 +118,7 @@
             z-index: -3;
             pointer-events: none;
             mix-blend-mode: multiply;
-            transition: all 0.4s ease;
+            transition: opacity 0.4s ease, filter 0.4s ease;
         }
 
         body.dark-mode .nanda-devi-bg {
@@ -185,11 +206,11 @@
         }
 
         .hero-content h1 {
-            font-size: clamp(3.5rem, 6vw, 5.5rem);
-            line-height: 1.05;
+            font-size: clamp(4rem, 10vw, 8rem);
+            line-height: 0.95;
             margin-bottom: 25px;
             color: var(--text-main);
-            letter-spacing: -1px;
+            letter-spacing: -3px;
         }
 
         .hero-subtitle {
@@ -810,7 +831,7 @@
                         <div class="card">
                             <span class="card-tag">Postgraduate</span>
                             <h3>MA Business Economics</h3>
-                            <span class="timeline">SIES College • 2023-2025</span>
+                            <span class="timeline">SIES College, University of Mumbai • 2023-2025</span>
                             <p>Advanced study of economic principles meticulously integrated with actionable business
                                 strategies and profound market analysis.</p>
                             <div class="grade-badges">
@@ -823,7 +844,7 @@
                         <div class="card">
                             <span class="card-tag">Undergraduate</span>
                             <h3>BA Economics</h3>
-                            <span class="timeline">ICLES' MJ College</span>
+                            <span class="timeline">ICLES' MJ College, University of Mumbai • 2019-2022</span>
                             <p>Cultivated a strong foundational knowledge in macroeconomic frameworks and precise
                                 quantitative microeconomics.</p>
                             <p style="margin-top: 15px; font-size: 1.1rem; font-weight: 600; color: var(--text-main);">
@@ -970,12 +991,32 @@
     <script>
         // 🏔️ Ultra-Fluid Lenis Scroll Initialization (Mountain Breeze Momentum)
         const lenis = new Lenis({
-            duration: 2.5, /* Increased for maximal smoothness */
+            duration: 2.5,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            smooth: true,
+            smoothWheel: true,
             smoothTouch: true,
             touchMultiplier: 2
         });
+
+        // Lenis Parallax Engine
+        const mountains = document.querySelector('.mountain-bg');
+        const nandaDevi = document.querySelector('.nanda-devi-bg');
+        const aipans = document.querySelectorAll('.aipan-mandala');
+
+        lenis.on('scroll', (e) => {
+            const scroll = e.scroll;
+
+            // Pure Hardware Accelerated Depth Translation
+            if (mountains) mountains.style.transform = `translate3d(0, ${scroll * 0.15}px, 0)`;
+            if (nandaDevi) nandaDevi.style.transform = `translate3d(0, ${scroll * 0.35}px, 0) scale(${1 + scroll * 0.0001})`;
+
+            aipans.forEach((aipan, i) => {
+                const speed = i === 0 ? 0.08 : -0.1;
+                // Add vertical Parallax alongside CSS rotation
+                aipan.style.transform = `translate3d(0, ${scroll * speed}px, 0)`;
+            });
+        });
+
         function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
         requestAnimationFrame(raf);
 
