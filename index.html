@@ -82,6 +82,30 @@
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ff4d6d' fill-opacity='0.05' d='M0,320 L150,150 L250,220 L400,80 L550,250 L650,180 L800,50 L950,200 L1100,100 L1250,220 L1440,90 L1440,320 Z' /%3E%3Cpath fill='%23ff4d6d' fill-opacity='0.03' d='M0,320 L100,200 L200,250 L350,100 L500,280 L600,200 L750,80 L900,220 L1050,150 L1200,250 L1440,150 L1440,320 Z' /%3E%3C/svg%3E");
         }
 
+        /* NANDA DEVI BACKGROUND */
+        .nanda-devi-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url("https://raw.githubusercontent.com/oghimanshu/resume/main/nanda_devi_bg.png");
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+            opacity: 0.2;
+            z-index: -3;
+            pointer-events: none;
+            mix-blend-mode: multiply;
+            transition: all 0.4s ease;
+        }
+
+        body.dark-mode .nanda-devi-bg {
+            opacity: 0.35;
+            filter: invert(1) brightness(1.2);
+            mix-blend-mode: screen;
+        }
+
         #cherry-blossom-canvas {
             position: fixed;
             top: 0;
@@ -459,19 +483,139 @@
                 padding: 0;
             }
         }
+
+        /* LIQUID GLASS WOBBLY NAVBAR */
+        nav.glass-nav {
+            position: fixed;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 12px;
+            border-radius: 100px;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(30px) saturate(200%);
+            -webkit-backdrop-filter: blur(30px) saturate(200%);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            z-index: 10000;
+            animation: liquidFloat 8s infinite alternate ease-in-out;
+            transition: all 0.5s var(--transition);
+        }
+
+        body.dark-mode nav.glass-nav {
+            background: rgba(20, 20, 24, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @keyframes liquidFloat {
+            0% {
+                transform: translateX(-50%) translateY(0px);
+                border-radius: 100px;
+            }
+
+            33% {
+                transform: translateX(-50%) translateY(-3px);
+                border-radius: 90px 110px 90px 110px;
+            }
+
+            66% {
+                transform: translateX(-50%) translateY(2px);
+                border-radius: 110px 90px 110px 90px;
+            }
+
+            100% {
+                transform: translateX(-50%) translateY(0px);
+                border-radius: 100px;
+            }
+        }
+
+        nav.glass-nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav.glass-nav a:hover {
+            background: var(--text-main);
+            color: var(--bg-color);
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* AIPAN GEOMETRIC MANDALAS */
+        .aipan-mandala {
+            position: fixed;
+            width: 700px;
+            height: 700px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg stroke='%23c9184a' stroke-width='2' fill='none' opacity='0.8'%3E%3Crect x='40' y='40' width='120' height='120' transform='rotate(45 100 100)'/%3E%3Crect x='40' y='40' width='120' height='120'/%3E%3Ccircle cx='100' cy='100' r='50'/%3E%3Ccircle cx='100' cy='100' r='60' stroke-dasharray='4'/%3E%3Cpath d='M100 10 L110 30 L100 20 L90 30 Z M190 100 L170 110 L180 100 L170 90 Z M100 190 L90 170 L100 180 L110 170 Z M10 100 L30 90 L20 100 L30 110 Z' fill='%23c9184a'/%3E%3Ccircle cx='100' cy='100' r='80' stroke-width='0.5'/%3E%3C/g%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.04;
+            z-index: -4;
+            pointer-events: none;
+            animation: rotateSlow 180s linear infinite;
+        }
+
+        body.dark-mode .aipan-mandala {
+            opacity: 0.06;
+        }
+
+        .aipan-1 {
+            top: -250px;
+            left: -250px;
+        }
+
+        .aipan-2 {
+            bottom: -200px;
+            right: -200px;
+            animation-direction: reverse;
+        }
+
+        @keyframes rotateSlow {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
     </style>
 </head>
 
-<body class="dark-mode">
+<body>
+
+    <!-- LIQUID GLASS NAVBAR -->
+    <nav class="glass-nav">
+        <a href="#smooth-content">Home</a>
+        <a href="#experience">Journey</a>
+        <a href="#education">Education</a>
+        <a href="#certs">Accolades</a>
+        <a href="#research">Projects</a>
+    </nav>
 
     <!-- Cherry Blossom Animation Canvas -->
     <canvas id="cherry-blossom-canvas"></canvas>
 
+    <!-- AIPAN Geometric Background Mandalas -->
+    <div class="aipan-mandala aipan-1"></div>
+    <div class="aipan-mandala aipan-2"></div>
+
     <!-- Uttarakhand Mountains Silhoutte via SVG -->
     <div class="mountain-bg"></div>
+    <div class="nanda-devi-bg"></div>
 
     <!-- Theme Selection -->
-    <div class="theme-toggle" id="theme-btn"><i class="fa-solid fa-sun"></i></div>
+    <div class="theme-toggle" id="theme-btn"><i class="fa-solid fa-moon"></i></div>
 
     <div id="smooth-wrapper">
         <div id="smooth-content">
@@ -520,7 +664,7 @@
             </section>
 
             <!-- EXPERIENCE SECTION -->
-            <section>
+            <section id="experience">
                 <div class="container">
                     <h2 class="section-title">Professional Journey</h2>
                     <div class="grid-layout">
@@ -558,7 +702,7 @@
             </section>
 
             <!-- EDUCATION SECTION -->
-            <section>
+            <section id="education">
                 <div class="container">
                     <h2 class="section-title">Academic Background</h2>
                     <div class="grid-layout">
@@ -589,7 +733,7 @@
             </section>
 
             <!-- CERTIFICATIONS SECTION -->
-            <section>
+            <section id="certs">
                 <div class="container">
                     <h2 class="section-title">Certifications & Accolades</h2>
                     <div class="grid-layout"
@@ -641,7 +785,7 @@
             </section>
 
             <!-- RESEARCH SECTION -->
-            <section style="padding-bottom: 120px;">
+            <section id="research" style="padding-bottom: 120px;">
                 <div class="container">
                     <h2 class="section-title">Research & Projects</h2>
                     <div class="grid-layout">
