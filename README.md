@@ -1,38 +1,42 @@
-# The Graphic Novel - Interactive Resume Website
+# Himanshu Gaur - Professional Academic Portfolio
 
-A highly interactive, "Graphic Novel" styled resume website inspired by manga aesthetics (Berserk) and retro arcade games. Built with vanilla HTML, CSS, and JavaScript.
+A highly professional, culturally rooted personal portfolio website engineered for an Economist and Assistant Professor. The aesthetic seamlessly blends modern **glassmorphism** design systems with subtle **Pahadi/Garhwali cultural motifs**. 
+
+Built with vanilla HTML, CSS (`:root` variables), and highly optimized native JavaScript.
 
 ## 🚀 Live Demo
 Hosted on GitHub Pages: [https://oghimanshu.github.io/resume/](https://oghimanshu.github.io/resume/)
 
-## 🛠️ Features
-- **Manga Aesthetic**: High-contrast monochrome design with "Berserk" inspired jagged elements and halftones.
-- **Interactive Arcade Layer**: Authentic 8-bit Pac-Man elements roaming the background.
-- **Fluid Animations**: Custom fluid cursor, scroll-triggered animations (GSAP/Lenis), and tilt effects.
-- **Responsive Design**: Fully optimized for desktop and mobile devices.
-- **Dark/Light Mode**: Themed toggle with distinct color palettes.
+## 🏔️ Design Philosophy & Features
+- **Cultural Identity (Pahadi / Garhwal)**: Deeply integrated regional homages, including a subtle, raw vector background of the majestic Nanda Devi peak and traditional local Aipan-inspired color palettes (`#c9184a`).
+- **Premium Glassmorphism**: Uses advanced CSS layering (`backdrop-filter: blur`) to create frosted-glass components resembling modern, high-end operating systems.
+- **Cherry Blossom Engine**: A lightweight, high-performance HTML5 `<canvas>` particle physics engine driving interactive, drifting cherry blossoms.
+- **Responsive Dark/Light Mode**: Full theme toggle support. The core background visuals seamlessly invert and utilize dynamic `mix-blend-mode` rendering (Multiply for Light Mode, Screen for Dark Mode).
+- **Academic Focus**: Redesigned structural layouts explicitly tailored for showcasing Research DOIs, Open-Source Projects, and higher education pedagogical milestones.
 
 ## 📂 Project Structure
-- `index.html`: Main entry point containing all structure, styles, and logic.
-- `profile.jpg`: Profile picture asset.
-- `README.md`: Project documentation.
+- `index.html`: Main entry point containing all structural semantics, CSS architecture, and animation logic.
+- `profile.jpg`: Primary avatar/display asset.
+- `nanda_devi_bg.png`: Dedicated background aesthetic imagery (referenced statically via GitHub Raw CDN).
+- `README.md`: Codebase documentation.
 
 ## 🔧 Setup & Customization
-1. **Clone the repo**:
+1. **Clone the repository**:
    ```bash
    git clone https://github.com/oghimanshu/resume.git
    ```
-2. **Open locally**:
-   Simply open `index.html` in your browser.
-3. **Customize**:
-   - Edit the `Hero` section in `index.html` to update your name and details.
-   - Replace `profile.jpg` with your own photo.
-   - Update links in the `Contact` and `Projects` sections.
+2. **Launch locally**:
+   Simply open `index.html` natively in any modern web browser. No Node.js backend, compiler, or development environment required.
+3. **Personalization**:
+   - Modify the `<div class="hero-section">` to update dual-location badges and intro copy.
+   - Explicit Research DOIs and publication links can be appended under the `Research & Projects` section grid.
+   - Accent colors and bezier animation curves can be quickly tuned in the CSS `:root` scope.
 
-## 🎨 Credits
-- **Fonts**: Cinzel & Space Grotesk (Google Fonts).
-- **Icons**: FontAwesome 6.
-- **Libraries**: GSAP (Animation), Lenis (Smooth Scroll), Vanilla-Tilt.js.
+## 🎨 Tech Stack & Credits
+- **Typography**: [Playfair Display](https://fonts.google.com/specimen/Playfair+Display) & [Inter](https://fonts.google.com/specimen/Inter) 
+- **Fluid Scrolling**: [Lenis](https://github.com/studio-freight/lenis) (Smooth Momentum Scroll)
+- **Iconography**: [FontAwesome 6](https://fontawesome.com/)
+- **Architecture**: HTML5, Vanilla JavaScript (Canvas APIs), CSS3 (`mix-blend-mode`, advanced selectors).
 
 ---
-*Designed & Developed by Himanshu Gaur*
+*Mentored, Designed & Developed by Himanshu Gaur*
