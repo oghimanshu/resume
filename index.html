@@ -159,13 +159,15 @@
         /* SCROLL REVEAL (Ultra Smooth Mountain Breeze) */
         .reveal {
             opacity: 0;
+            filter: blur(10px);
             transform: translateY(60px) scale(0.95);
-            transition: opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1), transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: opacity, transform;
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform, filter;
         }
 
         .reveal.active {
             opacity: 1;
+            filter: blur(0);
             transform: translateY(0) scale(1);
         }
 
@@ -368,14 +370,33 @@
             transition: var(--transition);
         }
 
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.06);
-            border-color: rgba(201, 24, 74, 0.2);
+        /* Ambient Glow effect following the mouse */
+        .card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(201, 24, 74, 0.04), transparent 40%);
+            opacity: 0;
+            transition: opacity 0.4s;
+            pointer-events: none;
         }
 
-        .card:hover::before {
-            opacity: 1;
+        body.dark-mode .card::after {
+            background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 77, 109, 0.06), transparent 40%);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 25px 45px rgba(0, 0, 0, 0.06);
+                border-color: rgba(201, 24, 74, 0.2);
+            }
+
+            .card:hover::before,
+            .card:hover::after {
+                opacity: 1;
+            }
         }
 
         .card-tag {
@@ -577,6 +598,81 @@
             }
         }
 
+        /* AIPAN ART BORDERS */
+        .aipan-border {
+            width: 100%;
+            height: 14px;
+            background-color: var(--accent-color);
+            background-image: radial-gradient(circle, white 3px, transparent 4px), radial-gradient(circle, white 3px, transparent 4px);
+            background-size: 40px 14px;
+            background-position: 0 0, 20px 0;
+            opacity: 0.85;
+            margin: 40px 0;
+            border-radius: 10px;
+        }
+
+        body.dark-mode .aipan-border {
+            background-image: radial-gradient(circle, #121420 3px, transparent 4px), radial-gradient(circle, #121420 3px, transparent 4px);
+        }
+
+        /* 🏔️ Garhwal Mountains Parallax Layers */
+        .chaukhamba-bg {
+            position: fixed;
+            bottom: -50px;
+            left: 0;
+            width: 100vw;
+            height: 70vh;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23c9184a' fill-opacity='0.08' d='M0,320 L120,200 L180,240 L280,120 L350,180 L420,50 L500,160 L580,200 L660,80 L760,250 L840,150 L920,200 L1020,30 L1100,220 L1200,100 L1300,250 L1440,80 L1440,320 Z' /%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: bottom;
+            z-index: -2;
+            pointer-events: none;
+            will-change: transform;
+        }
+
+        body.dark-mode .chaukhamba-bg {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ff4d6d' fill-opacity='0.12' d='M0,320 L120,200 L180,240 L280,120 L350,180 L420,50 L500,160 L580,200 L660,80 L760,250 L840,150 L920,200 L1020,30 L1100,220 L1200,100 L1300,250 L1440,80 L1440,320 Z' /%3E%3C/svg%3E");
+        }
+
+        .pine-trees-bg {
+            position: fixed;
+            bottom: -80px;
+            left: 0;
+            width: 100vw;
+            height: 35vh;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Cpath fill='%23c9184a' fill-opacity='0.15' d='M50,200 L60,110 L30,110 L55,40 L10,40 L60,-20 L110,40 L65,40 L90,110 L60,110 Z M250,200 L260,140 L230,140 L255,80 L210,80 L260,20 L310,80 L265,80 L290,140 L260,140 Z M150,200 L155,160 L135,160 L155,100 L125,100 L155,50 L185,100 L155,100 L175,160 L155,160 Z M350,200 L355,130 L335,130 L355,60 L315,60 L355,0 L395,60 L355,60 L375,130 L355,130 Z' /%3E%3C/svg%3E");
+            background-repeat: repeat-x;
+            background-size: 500px auto;
+            background-position: bottom;
+            z-index: -1;
+            pointer-events: none;
+            will-change: transform;
+        }
+
+        body.dark-mode .pine-trees-bg {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Cpath fill='%23ff4d6d' fill-opacity='0.2' d='M50,200 L60,110 L30,110 L55,40 L10,40 L60,-20 L110,40 L65,40 L90,110 L60,110 Z M250,200 L260,140 L230,140 L255,80 L210,80 L260,20 L310,80 L265,80 L290,140 L260,140 Z M150,200 L155,160 L135,160 L155,100 L125,100 L155,50 L185,100 L155,100 L175,160 L155,160 Z M350,200 L355,130 L335,130 L355,60 L315,60 L355,0 L395,60 L355,60 L375,130 L355,130 Z' /%3E%3C/svg%3E");
+        }
+
+        .monal-bird {
+            position: fixed;
+            top: 25%;
+            left: -150px;
+            width: 120px;
+            height: 120px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23c9184a' fill-opacity='0.25' d='M21.5,10.8c-1.2-1-3.6-0.8-5.7,0.2c-0.2-1.7-1.3-3.2-2.9-4.2c1.4-1.2,2.3-2.6,2.2-3.8c-0.1-0.9-0.8-1.5-1.5-1.6 c-0.6-0.1-1.3,0.3-2,1c-1.3,1.4-1.6,3.3-1,5.1C9.5,8,8.2,8.8,7.3,9.8c-1,1.1-2,2.6-3.8,3.2C1.9,13.6,0.6,14.8,0.2,16 c-0.3,1.1,0,2.1,0.8,2.8c1,0.8,2.7,1,4.4,0.3c1.7-0.7,3.6-2.1,5.7-2.6c0.6,0.9,1.6,1.4,2.8,1.4c1.6,0,3.3-0.9,4.4-2.2 C19.6,14.2,21,12.7,21.5,10.8z M11.5,13.1c-1.3-0.5-2.7-1.3-4-2c1.2-0.3,2.4-0.1,3.4,0.4C10.7,11.8,11.1,12.4,11.5,13.1z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-size: contain;
+            z-index: -3;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 1s;
+            will-change: transform;
+        }
+
+        body.dark-mode .monal-bird {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ff4d6d' fill-opacity='0.3' d='M21.5,10.8c-1.2-1-3.6-0.8-5.7,0.2c-0.2-1.7-1.3-3.2-2.9-4.2c1.4-1.2,2.3-2.6,2.2-3.8c-0.1-0.9-0.8-1.5-1.5-1.6 c-0.6-0.1-1.3,0.3-2,1c-1.3,1.4-1.6,3.3-1,5.1C9.5,8,8.2,8.8,7.3,9.8c-1,1.1-2,2.6-3.8,3.2C1.9,13.6,0.6,14.8,0.2,16 c-0.3,1.1,0,2.1,0.8,2.8c1,0.8,2.7,1,4.4,0.3c1.7-0.7,3.6-2.1,5.7-2.6c0.6,0.9,1.6,1.4,2.8,1.4c1.6,0,3.3-0.9,4.4-2.2 C19.6,14.2,21,12.7,21.5,10.8z M11.5,13.1c-1.3-0.5-2.7-1.3-4-2c1.2-0.3,2.4-0.1,3.4,0.4C10.7,11.8,11.1,12.4,11.5,13.1z'/%3E%3C/svg%3E");
+        }
+
         /* ==================================
            UNIVERSAL DEVICE OPTIMIZATIONS
            (From Mini-Mobile up to 4K TV)
@@ -677,6 +773,16 @@
                 grid-template-columns: 1fr;
             }
 
+            nav.glass-nav {
+                width: 95%;
+                flex-wrap: wrap;
+                row-gap: 8px;
+                /* Prevent button overlap */
+                border-radius: 20px;
+                animation: none;
+                /* Disable wobble on small screens to maintain layout */
+            }
+
             nav.glass-nav a {
                 padding: 6px 12px;
                 font-size: 0.85rem;
@@ -732,8 +838,11 @@
     <div class="aipan-mandala aipan-1"></div>
     <div class="aipan-mandala aipan-2"></div>
 
-    <!-- Uttarakhand Mountains Silhoutte via SVG -->
+    <!-- 🏔️ Garhwal Multi-Layer Parallax Background -->
+    <div class="chaukhamba-bg"></div>
     <div class="mountain-bg"></div>
+    <div class="pine-trees-bg"></div>
+    <div class="monal-bird"></div>
     <div class="nanda-devi-bg"></div>
 
     <!-- Theme Selection -->
@@ -912,9 +1021,28 @@
                     <h2 class="section-title">Research & Projects</h2>
                     <div class="grid-layout">
 
+                        <!-- NEWLY ADDED PAPER: Gen-Z -->
+                        <div class="card">
+                            <span class="card-tag">Latest Publication</span>
+                            <h3>Financial Literacy among Gen-Z of India</h3>
+                            <span class="timeline">International Journal of Arts, Social Sciences and Humanities</span>
+                            <p>This study surveys Generation Z respondents across India to understand their financial
+                                knowledge and investment readiness. The findings highlight that financial education must
+                                become more practical and reach young people early to foster resilient financial
+                                behaviours.</p>
+                            <div style="margin-top: 10px; margin-bottom: -10px;">
+                                <a href="https://doi.org/10.5281/zenodo.19640790" target="_blank"><img
+                                        src="https://zenodo.org/badge/DOI/10.5281/zenodo.19640790.svg" alt="DOI"></a>
+                            </div>
+                            <div class="card-action">
+                                <a href="https://doi.org/10.5281/zenodo.19640790" target="_blank" class="btn">Read
+                                    Paper</a>
+                            </div>
+                        </div>
+
                         <!-- NEWLY ADDED PAPER -->
                         <div class="card">
-                            <span class="card-tag">Latest DOI Publication</span>
+                            <span class="card-tag">DOI Publication</span>
                             <h3>Bread and Circus in Modern India: Welfare Schemes and Voting Behaviour in Emerging
                                 Democracies</h3>
                             <span class="timeline">DOI: 10.13140/RG.2.2.22068.62082</span>
@@ -1003,15 +1131,27 @@
 
         // Lenis Parallax Engine
         const mountains = document.querySelector('.mountain-bg');
+        const chaukhamba = document.querySelector('.chaukhamba-bg');
+        const pineTrees = document.querySelector('.pine-trees-bg');
+        const monalBird = document.querySelector('.monal-bird');
         const nandaDevi = document.querySelector('.nanda-devi-bg');
         const aipans = document.querySelectorAll('.aipan-mandala');
 
         lenis.on('scroll', (e) => {
             const scroll = e.scroll;
 
-            // Pure Hardware Accelerated Depth Translation
+            // 🏔️ Garhwal Multi-Layer Parallax Translation
+            if (pineTrees) pineTrees.style.transform = `translate3d(0, ${scroll * 0.05}px, 0)`;
             if (mountains) mountains.style.transform = `translate3d(0, ${scroll * 0.15}px, 0)`;
+            if (chaukhamba) chaukhamba.style.transform = `translate3d(0, ${scroll * 0.25}px, 0)`;
             if (nandaDevi) nandaDevi.style.transform = `translate3d(0, ${scroll * 0.35}px, 0) scale(${1 + scroll * 0.0001})`;
+
+            if (monalBird) {
+                // Fade in bird as user scrolls past hero
+                monalBird.style.opacity = scroll > 150 ? 1 : 0;
+                // Fly across screen on scroll (diagonal approach)
+                monalBird.style.transform = `translate3d(${scroll * 0.8}px, ${Math.sin(scroll * 0.01) * 30 + scroll * 0.1}px, 0)`;
+            }
 
             aipans.forEach((aipan, i) => {
                 const speed = i === 0 ? 0.08 : -0.1;
@@ -1058,7 +1198,48 @@
             }
         });
 
-        // 🌸 Highly Optimized Cherry Blossom Animation System 🌸
+        // 💫 3D Glassmorphism Card Hover Transitions & Animations
+        if (window.matchMedia("(pointer: fine)").matches) {
+            document.querySelectorAll('.card').forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const xc = rect.width / 2;
+                    const yc = rect.height / 2;
+                    const dx = x - xc;
+                    const dy = y - yc;
+                    const rotationY = (dx / xc) * 5; // Max tilt logic
+                    const rotationX = (dy / yc) * -5;
+
+                    // Update variables for ambient radial glow
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
+
+                    card.style.transform = `perspective(1000px) rotateX(${rotationX}deg) rotateY(${rotationY}deg) translateY(-10px)`;
+                    card.style.transition = 'transform 0.1s ease-out';
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = ''; // Unset to restore CSS fallback rules
+                    card.style.transition = 'var(--transition)';
+                });
+            });
+
+            // 🧲 Magnetic Interaction on Buttons and NavLinks
+            document.querySelectorAll('.btn, nav.glass-nav a, .social-links a').forEach(btn => {
+                btn.addEventListener('mousemove', (e) => {
+                    const rect = btn.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+                    btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+                });
+                btn.addEventListener('mouseleave', () => {
+                    btn.style.transform = '';
+                });
+            });
+        }
+
+        // 🌸 Mountain Weather Animation System (Buransh Petals & Snowflakes) ❄️
         const canvas = document.getElementById('cherry-blossom-canvas');
         const ctx = canvas.getContext('2d');
 
@@ -1070,10 +1251,10 @@
             height = canvas.height = window.innerHeight;
         });
 
-        const petals = [];
-        const petalCount = window.innerWidth < 768 ? 20 : 45; // Responsive count
+        const particles = [];
+        const particleCount = window.innerWidth < 768 ? 30 : 60; // Responsive count
 
-        class Petal {
+        class Particle {
             constructor() {
                 this.reset();
                 this.y = Math.random() * height; // Initial random spread
@@ -1082,8 +1263,9 @@
             reset() {
                 this.x = Math.random() * width;
                 this.y = -20;
-                this.size = Math.random() * 6 + 5; // Slightly larger, visible petals
-                this.speedY = Math.random() * 1.5 + 0.8;
+                this.type = Math.random() > 0.4 ? 'snow' : 'petal'; // Snow and Buransh
+                this.size = this.type === 'snow' ? Math.random() * 2.5 + 1 : Math.random() * 6 + 5;
+                this.speedY = this.type === 'snow' ? Math.random() * 1 + 0.5 : Math.random() * 1.5 + 0.9;
                 this.speedX = Math.random() * 2 - 1;
                 this.angle = Math.random() * 360;
                 this.spin = Math.random() * 2 - 1;
@@ -1095,7 +1277,7 @@
             update() {
                 this.y += this.speedY;
                 // Elegant drifting formula
-                this.x += this.speedX + Math.sin(this.wobblePhase) * 1.2;
+                this.x += this.speedX + Math.sin(this.wobblePhase) * 1.5;
                 this.wobblePhase += this.wobbleSpeed;
                 this.angle += this.spin;
 
@@ -1112,35 +1294,40 @@
                 ctx.translate(this.x, this.y);
                 ctx.rotate(this.angle * Math.PI / 180);
 
-                // Adaptive colors depending on theme
                 const isDark = document.body.classList.contains('dark-mode');
-                // Light mode: soft pink (#ffb7c5). Dark mode: deep saturated pink (#ff4d6d).
-                const r = isDark ? 255 : 255;
-                const g = isDark ? 77 : 183;
-                const b = isDark ? 109 : 197;
 
-                ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${this.opacity})`;
-
-                // Elegant petal path rendering
-                ctx.beginPath();
-                ctx.moveTo(0, 0);
-                ctx.quadraticCurveTo(this.size * 1.5, -this.size * 1.5, this.size * 2, 0);
-                ctx.quadraticCurveTo(this.size * 1.5, this.size * 1.5, 0, 0);
-                ctx.fill();
+                if (this.type === 'petal') {
+                    // Buransh (Rhododendron) - Deep Red/Pink depending on Mode
+                    const r = isDark ? 255 : 201;
+                    const g = isDark ? 77 : 24;
+                    const b = isDark ? 109 : 74;
+                    ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${this.opacity})`;
+                    ctx.beginPath();
+                    ctx.moveTo(0, 0);
+                    ctx.quadraticCurveTo(this.size * 1.5, -this.size * 1.5, this.size * 2, 0);
+                    ctx.quadraticCurveTo(this.size * 1.5, this.size * 1.5, 0, 0);
+                    ctx.fill();
+                } else {
+                    // Snowflake
+                    ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity + 0.3})`;
+                    ctx.beginPath();
+                    ctx.arc(0, 0, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
 
                 ctx.restore();
             }
         }
 
-        for (let i = 0; i < petalCount; i++) {
-            petals.push(new Petal());
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
         }
 
         function animate() {
             ctx.clearRect(0, 0, width, height);
-            for (let i = 0; i < petals.length; i++) {
-                petals[i].update();
-                petals[i].draw();
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
             }
             requestAnimationFrame(animate);
         }
