@@ -142,7 +142,7 @@
         /* ABSTRACT BACKGROUND GRAPHS */
         .bg-graph {
             position: fixed;
-            width: 180px;
+            width: clamp(100px, 15vw, 250px);
             opacity: 0.12;
             z-index: -1;
             pointer-events: none;
@@ -189,9 +189,9 @@
             position: fixed;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%) rotate(23.5deg);
-            width: 800px;
-            height: 800px;
+            transform: translate(-50%, -50%);
+            width: 80vmin; /* Fluid scaling for all devices */
+            height: 80vmin; /* Fluid scaling for all devices */
             z-index: -2;
             opacity: 0.25; /* Softer, elegant visibility */
             pointer-events: none;
@@ -945,8 +945,6 @@
         /* 📱 Tablet Portrait & Small Laptops */
         @media (max-width: 960px) {
             .earth-container {
-                width: 500px;
-                height: 500px;
                 opacity: 0.1;
             }
 
@@ -992,12 +990,6 @@
         @media (max-width: 600px) {
             html {
                 font-size: 15px;
-            }
-
-            .earth-container {
-                width: 350px;
-                height: 350px;
-                top: 50%;
             }
 
             section {
@@ -1142,7 +1134,7 @@
             <polyline points="0,40 20,25 40,30 60,10 80,15 100,0" fill="none" stroke="var(--accent-color)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
     </div>
-    <div class="bg-graph" style="top: 65%; right: 5%; width: 140px;">
+    <div class="bg-graph" style="top: 65%; right: 5%; width: clamp(80px, 12vw, 200px);">
         <svg viewBox="0 0 100 50" class="graph-svg">
             <rect x="0" y="35" width="12" height="15" fill="var(--accent-color)" opacity="0.6" rx="2"/>
             <rect x="22" y="25" width="12" height="25" fill="var(--accent-color)" opacity="0.6" rx="2"/>
@@ -1151,7 +1143,7 @@
             <rect x="88" y="5" width="12" height="45" fill="var(--accent-color)" opacity="0.6" rx="2"/>
         </svg>
     </div>
-    <div class="bg-graph" style="top: 85%; left: 12%; width: 160px;">
+    <div class="bg-graph" style="top: 85%; left: 12%; width: clamp(90px, 14vw, 220px);">
         <svg viewBox="0 0 100 40" class="graph-svg">
             <polyline points="0,30 25,15 50,35 75,5 100,20" fill="none" stroke="var(--accent-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4,4"/>
         </svg>
@@ -1514,38 +1506,27 @@
         lenis.on('scroll', (e) => {
             const scroll = e.scroll;
 
-            // Only run heavy parallax on non-mobile to fix scrappy scrolling
-            if (window.innerWidth > 768) {
-                if (mountains) mountains.style.transform = `translate3d(0, ${scroll * 0.15}px, 0)`;
-                if (nandaDevi) nandaDevi.style.transform = `translate3d(0, ${scroll * 0.35}px, 0) scale(${1 + scroll * 0.0001})`;
+            // Universal Parallax Engine
+            const isMobile = window.innerWidth <= 768;
+            const m = isMobile ? 0.6 : 1; // mobile multiplier to soften parallax
 
-                bgGraphs.forEach((graph, i) => {
-                    const speed = i === 1 ? -0.2 : 0.15;
-                    const rotate = scroll * 0.03 * (i % 2 === 0 ? 1 : -1);
-                    graph.style.transform = `translate3d(0, ${scroll * speed}px, 0) rotate(${rotate}deg)`;
-                });
+            if (mountains) mountains.style.transform = `translate3d(0, ${scroll * 0.15 * m}px, 0)`;
+            if (nandaDevi) nandaDevi.style.transform = `translate3d(0, ${scroll * 0.35 * m}px, 0) scale(${1 + scroll * 0.0001})`;
 
-                if (spinningEarth) {
-                    // Realistic horizontal rotation (yaw) along tilted axis
-                    spinningEarth.style.backgroundPosition = `${scroll * -0.5}px 0`;
-                }
+            bgGraphs.forEach((graph, i) => {
+                const speed = (i === 1 ? -0.2 : 0.15) * m;
+                const rotate = scroll * 0.03 * (i % 2 === 0 ? 1 : -1) * m;
+                graph.style.transform = `translate3d(0, ${scroll * speed}px, 0) rotate(${rotate}deg)`;
+            });
 
-                aipans.forEach((aipan, i) => {
-                    const speed = i === 0 ? 0.08 : -0.1;
-                    // Add vertical Parallax alongside CSS rotation
-                    aipan.style.transform = `translate3d(0, ${scroll * speed}px, 0)`;
-                });
-            } else {
-                // Slower earth rotation for mobile
-                if (spinningEarth) {
-                    spinningEarth.style.backgroundPosition = `${scroll * -0.3}px 0`;
-                }
-
-                bgGraphs.forEach((graph, i) => {
-                    const speed = i === 1 ? -0.1 : 0.08;
-                    graph.style.transform = `translate3d(0, ${scroll * speed}px, 0)`;
-                });
+            if (spinningEarth) {
+                spinningEarth.style.backgroundPosition = `${scroll * -0.5 * m}px 0`;
             }
+
+            aipans.forEach((aipan, i) => {
+                const speed = (i === 0 ? 0.08 : -0.1) * m;
+                aipan.style.transform = `translate3d(0, ${scroll * speed}px, 0)`;
+            });
         });
 
         function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
