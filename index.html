@@ -173,7 +173,7 @@
             position: fixed;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%) rotate(23.5deg);
             width: 800px;
             height: 800px;
             z-index: -2;
@@ -1322,8 +1322,8 @@
                 if (nandaDevi) nandaDevi.style.transform = `translate3d(0, ${scroll * 0.35}px, 0) scale(${1 + scroll * 0.0001})`;
 
                 if (spinningEarth) {
-                    spinningEarth.style.backgroundPosition = `${scroll * -0.3}px 0`;
-                    spinningEarth.style.transform = `rotate(${scroll * 0.15}deg)`;
+                    // Realistic horizontal rotation (yaw) along tilted axis
+                    spinningEarth.style.backgroundPosition = `${scroll * -0.5}px 0`;
                 }
 
                 aipans.forEach((aipan, i) => {
@@ -1334,8 +1334,7 @@
             } else {
                 // Slower earth rotation for mobile
                 if (spinningEarth) {
-                    spinningEarth.style.backgroundPosition = `${scroll * -0.2}px 0`;
-                    spinningEarth.style.transform = `rotate(${scroll * 0.1}deg)`;
+                    spinningEarth.style.backgroundPosition = `${scroll * -0.3}px 0`;
                 }
             }
         });
